@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<meta name="viewport" content="width=1036" />
+
+<title>BLAHSUM</title>
+<meta name="description" content="Hard Core Punk Rap">
+<link rel="shortcut icon" href="https://static.tumblr.com/b7gxbzq/I3Knmgu37/favicon__5_.jpg" type="image/x-icon" />
+<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+
+<style>
+
+
+    html {
+        height:100%;
+    }
+    body {
+        padding:0px;
+        margin-top:0px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+        background-image:url('https://static.tumblr.com/b7gxbzq/gsgnx9r06/blahworldbackground.jpg');
+        background-size:cover;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    a {
+        text-decoration: none;
+    }
+    .invisible{
+        visibility:hidden;
+        opacity:0;
+    }
+    .wrapper{
+        width:960px;
+        margin:0px auto;
+        
+    }
+    #topBar {
+        margin-bottom:0px;
+        width:100%;
+    }
+    #banner {
+        background:#000000 url("https://static.tumblr.com/b7gxbzq/kwAnklx5z/blahsum_banner.jpg") center no-repeat;
+        height:150px;
+        width:100%;
+    }
+    #moonPhase {
+        display:inline-block;
+        position:relative;
+        left:0%;
+        height:70px;
+        width:70px;
+        border-radius: 100% 100%;
+        background:url("https://www.moonmodule.com/cs/dm/vn.gif") #000000 -20px -17px no-repeat;
+        background-size:156% 229%;
+    }
+    #giveaway{
+        display:none;
+    }
+    #microwave {
+        display: inline-block;
+        position:relative;
+        z-index:1;
+        background: url('https://static.tumblr.com/b7gxbzq/1bAnm3wkb/rsz_1rsz_551b58c9f19db.png') left top no-repeat;
+        height: 605px;
+        width: 1036px;
+        background-size:100% 100%;
+        left:-38px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom:0px;
+        -webkit-user-select: none; /* Chrome/Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+ */
+        /* Rules below not implemented in browsers yet */
+        -o-user-select: none;
+        user-select: none;
+    }
+    #player {
+        height:333px;
+        width:592px;
+        position:relative;
+        top:125px;
+        left:120px;
+        -webkit-user-select: all; /* Chrome/Safari */        
+        -moz-user-select: all; /* Firefox */
+        -ms-user-select: all; /* IE10+ */
+        /* Rules below not implemented in browsers yet */
+        -o-user-select: all;
+        user-select: all;
+    }
+    #instagramButton{
+        top:357px;
+        left:864px;
+        background-image:url("https://static.tumblr.com/b7gxbzq/iv3ocw1xt/instagrambutton.png");
+    }
+    
+    #soundcloudButton{
+        top:439px;
+        left:862px;
+        width:37px;
+        background-image:url("https://static.tumblr.com/b7gxbzq/Fx8pchmxs/soundcloudlogo.png");
+        background-size:110%;
+    }
+    
+    #twitterButton{
+        top:323px;
+        left:932px;
+        background-image:url("https://static.tumblr.com/b7gxbzq/iutptd85z/twitter_social_icon_rounded_square_color.png");
+        
+    }
+    
+    #spotifyButton{
+        top:371px;
+        left:966px;
+        background-color:white;
+        border-radius:50px;
+        background-image:url("https://static.tumblr.com/b7gxbzq/IaLptdamt/spotify_icon_rgb_green.png") ;
+    }
+    #youtubeButton{
+        top:439px;
+        left:953px;
+        background-image:url("https://static.tumblr.com/b7gxbzq/YW8ptdb07/yt_icon_rgb.png");
+        height:25px;
+        width:35px;
+    }
+    #startButton{
+        top:350px;
+        left:1000px;
+    }
+    .microwaveButton{
+        height:28px;
+        width:28px;
+        background-size:cover;
+        background-repeat:no-repeat;
+        position:absolute;
+        border-radius:3px;
+    }
+
+    #timer {
+        position:absolute;
+        top:95px;
+        right:79px;
+        background: #555;
+        font-family: 'digital-7mono','Orbitron', 'Arial';
+        font-size: 26px;
+        color:#0a0;
+    }
+    
+ /*All Album styling below. Each album must correspond to a bcPlayer*/
+    #discog{
+        z-index:1;
+        margin:25px;
+        padding:20px;
+        text-align:center;
+    }
+    #popUpAlbumPlayer{
+        
+    }
+    #patreon{
+        display:block;
+        margin-top:25px;
+        margin-left:auto;
+        margin-right:auto;
+        width:175px;
+        height:50px;
+    }
+    #merch{
+        font: bold 100px Sans-Serif;
+        display:block;
+        margin-bottom: 25px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+        font-size:100px;
+        color: #92a5de;
+        text-shadow:0px 0px 0 rgb(137,156,213),1px 1px 0 rgb(129,148,205),2px 2px 0 rgb(120,139,196),3px 3px 0 rgb(111,130,187),4px 4px 0 rgb(103,122,179),5px 5px 0 rgb(94,113,170),6px 6px 0 rgb(85,104,161),7px 7px 0 rgb(76,95,152),8px 8px 0 rgb(68,87,144),9px 9px 0 rgb(59,78,135),10px 10px 0 rgb(50,69,126),11px 11px 0 rgb(42,61,118),12px 12px 0 rgb(33,52,109),13px 13px 0 rgb(24,43,100),14px 14px 0 rgb(15,34,91),15px 15px 0 rgb(7,26,83),16px 16px 0 rgb(-2,17,74),17px 17px 0 rgb(-11,8,65),18px 18px 0 rgb(-19,0,57),19px 19px 0 rgb(-28,-9,48), 20px 20px 0 rgb(-37,-18,39),21px 21px 20px rgba(0,0,0,1),21px 21px 1px rgba(0,0,0,0.5),0px 0px 20px rgba(0,0,0,.2);
+      }
+      #merchText{
+          color:#92a5de;
+          text-decoration:none;
+      }
+    #feature{
+        position:relative;
+        z-index:1;
+        margin: 0px 25px;
+        padding:20px;
+        text-align:center;
+        width:1036px;
+        height:500px;
+        left:-84px;
+    }
+    .album {
+        display:inline-block;
+        width:140px;
+        height:140px;
+        box-shadow:1px 1px 3px #000;
+        margin:25px;
+        background-size:contain;
+        background-position:center;
+    }
+    .album:hover {
+        cursor: pointer; cursor: hand;
+        box-shadow:-1px -1px 3px #ddd;
+        margin:25px;
+        background-size:contain;
+        background-position:center;
+        
+    }
+    .feature {
+        display:inline-block;
+        width:460px;
+        height:460px;
+        box-shadow:1px 1px 3px #000;
+        margin:25px;
+        background-size:contain;
+        background-position:center;
+    }
+    .featurePlayer{
+        display:inline-block;
+        width:280px;
+        height:280px;
+        margin:0;
+        padding:0;
+        frameborder: 0;
+        
+    }
+    .feature:hover {
+        cursor: pointer; cursor: hand;
+        box-shadow:-1px -1px 3px #ddd;
+        margin:25px;
+        background-size:contain;
+        background-position:center;
+        
+    }
+    /* numbering is bottom to top right to left, very dumb" */
+    #feature1{
+        /* All Blahsum*/
+        background-image:url("https://static.tumblr.com/b7gxbzq/9Bhptd938/blahsum_double_trouble.jpg");
+    }
+    #feature2{
+        /* MoonTape IV*/
+        background-image:url("https://static.tumblr.com/b7gxbzq/Fdtptd8uy/moontapeivalbumart.jpg");
+    }
+    #feature4{
+        /* Moon Tape V*/
+        background-image:url("https://static.tumblr.com/b7gxbzq/bDYqhmznj/moontapevalbumart.png");
+    }
+    #feature3{
+        /*  Starry Night */
+        background-image:url("https://static.tumblr.com/b7gxbzq/yFbqnnzwu/starrynightalbumcover.jpg");
+    }
+    
+    /*#album29{*/
+        /* I'm Alone */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/5ZHph4706/i_malonealbumart.jpg");*/
+    /*}*/
+    /*#album28{*/
+        /* Moon Tape 4 */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/DyKpc0wln/moontape4albumart.jpg");*/
+    /*}*/
+    /*#album27{*/
+        /*OneMoreLie*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/SkCp0edpb/onemoreliealbumart.jpg");*/
+    /*}*/
+    /*#album26{*/
+        /*Flesh*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/q44p0edhb/fleshalbumart.jpg");*/
+    /*}*/
+    /*#album25{*/
+        /*SunBones*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/Le0oyx76v/subonesalbumart.jpg");*/
+    /*}*/
+    /*#album24{*/
+        /*The Big Lie*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/5hqoz24xq/thebigliealbumart.jpg");*/
+    /*}*/
+    /*#album23{*/
+        /*I Dont Feel The Same*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/JKMovvwrl/idontfeelthesamealbumart.jpg");*/
+    /*}*/
+    /*#album22{*/
+        /*Monopoly*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/g7Hoz24w7/monopolyalbumart.jpg");*/
+    /*}*/
+    /*#album21{*/
+        /*Bad News*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/MHsorcnka/badnewslilalbum.jpg");*/
+    /*}*/
+    /*#album20{*/
+        /*Fade Away*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/qEiopsms9/fadeaway.jpg");*/
+    /*}*/
+    /*#album19{*/
+        /*Checking Out*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/aCgoo9tnt/checkingout.jpg");*/
+    /*}*/
+    /* #album18{*/
+        /*Helter Skelter*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/Kj4onyblk/helterskelter.jpg");*/
+    /*}*/
+    /*#album17{*/
+        /*I don't Owe You Shit*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/D2Sol7zln/idontoweyoushitalbumart.jpg");*/
+    /*}*/
+    /*#album16{*/
+        /*Crash Your Car*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/Bfqol833g/crashyourcaralbumart.jpg");*/
+    /*}*/
+    /*#album15{*/
+        /*Kill The Beast*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/HCZoi7k3b/a2413674661_7.jpg");*/
+    /*}*/
+    /*#album14{*/
+        /*Tune In Drop Out*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/Kx1ogxban/tuneindropout.jpg");*/
+    /*}*/
+    /*#album13{*/
+        /*Now That I'm Dead*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/xdqodm5qz/nowthatimdeadalbumart.jpg");*/
+    /*}*/
+    /*#album12{*/
+        /*Pompeii*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/Srloamcuw/pompeiiart.jpg");*/
+    /*}*/
+    /*#album11{*/
+        /*City On The Hill*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/x2Wo93sne/cityonthehillart.jpg");*/
+    /*}*/
+    /*#album10{*/
+        /* Ode to Cigarette Jones */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/IjJo7jy8l/odetocigarettejonesalbumart.jpg");*/
+    /*}*/
+    /*#album9{*/
+        /* The Bad Luck Kid */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/aeKo62dkd/thebadluckkid.jpg");*/
+    /*}*/
+    
+    /*#album8{*/
+        /* Money Power Blahsum */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/I5Xo4iw15/moneypowerblahsum.jpg");*/
+    /*}*/
+    
+    /*#album7{*/
+        /* This WAy */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/Cleo2z1vj/thisway.jpg");*/
+    /*}*/
+    /*#album6{*/
+        /* No Refunds */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/z3jo2z2qk/norefunds.jpg");*/
+    /*}*/
+    /*#album5{*/
+        /* Self Hate */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/yiJo2z273/selfhate.jpg");*/
+    /*}*/
+    /*#album4{*/
+        /* Year of the Monkey */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/jWMo29b1p/yearofthemonkey.jpg");*/
+    /*}*/
+    /*#album3{*/
+        /* CRACK */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/cNInyngyd/crackalbumart.jpg");*/
+    /*}*/
+    /*#album2{*/
+        /* Blah World */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/Mrvnxxdst/blahworldalbum.jpg");*/
+    /*}*/
+    /*#album1{*/
+        /* Moon Tape I */
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/qWnnxxdu7/moontapealbum.jpg");*/
+    /*}*/
+    /*#bcPlayer1{*/
+        /* Moon Tape I */
+    /*    top:30%;*/
+    /*}*/
+    /*#album0{*/
+        /* Demo1*/
+    /*    background-image:url("https://static.tumblr.com/b7gxbzq/p3Znxxdw7/demo1album.jpg");*/
+    /*}*/
+    /*#bcPlayer0{*/
+        /* Moon Tape I */
+    /*    top:30%;*/
+    /*}*/
+    
+    /*.bcPlayer{*/
+    /*    position:fixed;*/
+    /*    z-index:3;*/
+    /*    width:400px;*/
+    /*    height:400px;*/
+    /*    top:50%;*/
+    /*    left:50%;*/
+    /*    margin-left:-200px;*/
+    /*    margin-top:-200px;*/
+    /*}*/
+    /*.greyArea{*/
+    /*    position:fixed;*/
+    /*    z-index:2;*/
+    /*    height:100%;*/
+    /*    width:100%;*/
+    /*    top:0px;*/
+    /*    background:rgba(50,50,50,.5);*/
+    /*}*/
+    @font-face {
+    font-family: 'digital-7mono';
+    src: url('digital-7.mono-webfont.eot');
+    }
+
+    @font-face {
+        font-family: 'digital-7mono';
+        src: url(data:application/font-woff2;charset=utf-8;base64,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) format('woff2'),
+             url(data:application/font-woff;charset=utf-8;base64,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) format('woff'),
+             url('digital-7.mono-webfont.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+<!--                                   -->    
+</style>
+
+  <body>
+<div id="topBar">
+    <div id="banner">
+        <a id="moonLink" href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt"><div id="moonPhase"></div></a>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div id="giveaway" style="margin-top: 40px">
+        <a class="e-widget no-button" href="https://gleam.io/FqkrM/rare-blahsum-bundle-giveaway-round-2" rel="nofollow">RARE BLAHSUM BUNDLE GIVEAWAY</a>
+    <script type="text/javascript" src="https://js.gleam.io/e.js" async="true"></script>
+    </div>
+    <div id="patreon">
+        <div style="display:inline-block;">
+            <a href="https://www.patreon.com/bePatron?u=783042" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+        </div>
+    </div>
+    <div id="merch" class="vamp">
+            <a id="merchText" href="https://blahsum.myshopify.com"> MERCH </a>
+    </div>
+    <div id="microwave">
+        <div id="player"> <!-- 1. The <iframe> (and video player) will replace this <div> tag. --></div>
+        <a href="https://twitter.com/blahsum"><div id="twitterButton" class ="microwaveButton"></div></a>
+        <a href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt"><div id="spotifyButton" class ="microwaveButton"></div></a>
+        <a href="https://instagram.com/blahsum/"><div id="instagramButton" class ="microwaveButton"></div></a>
+        <a href="https://www.youtube.com/user/BlahSumX"><div id="youtubeButton" class="microwaveButton"></div></a>
+        <a href="https://soundcloud.com/blahsumx"><div id="soundcloudButton" class = "microwaveButton"></div></a>
+        <a href="#mc_embed_signup" id="mc-embedded-tumblr-signup"><div id="openDoor"></div></a>
+        
+        <p id="timer">HELLO</p>
+    </div>
+    <div id ="feature">
+        <a href="https://open.spotify.com/album/61p2fcftUh5K5hLNhoEYTA?si=JMfTRpk_QxyiyqJ3HfEiGg"><div id="feature4" class="feature"></div></a>
+        <a href="https://open.spotify.com/album/2dQ1wTwkSPPmItN7E9gmkY"><div id="feature3" class="feature"></div></a>
+        <a href="https://open.spotify.com/album/4slyMBp56njZVGStXAjPxc"><div id="feature2" class="feature"></div></a>
+        <a href="https://open.spotify.com/playlist/68EtQfVDYkwgd746dD3XCV"><div id="feature1" class="feature"></div></a>
+    </div>
+<!--    <div id="discog">-->
+<!--        <div id="album29" class="album"></div>-->
+<!--        <div id="album28" class="album"></div>-->
+<!--        <div id="album27" class="album"></div>-->
+<!--        <div id="album26" class="album"></div>-->
+<!--        <div id="album25" class="album"></div>-->
+<!--        <div id="album24" class="album"></div>-->
+<!--        <div id="album23" class="album"></div>-->
+<!--        <div id="album22" class="album"></div>-->
+<!--        <div id="album21" class="album"></div>-->
+<!--        <div id="album20" class="album"></div>-->
+<!--        <div id="album19" class="album"></div>-->
+<!--        <div id="album18" class="album"></div>-->
+<!--        <div id="album17" class="album"></div>-->
+<!--        <div id="album16" class="album"></div>-->
+<!--        <div id="album15" class="album"></div>-->
+<!--        <div id="album14" class="album"></div>-->
+<!--        <div id="album13" class="album"></div>-->
+<!--        <div id="album12" class="album"></div>-->
+<!--        <div id="album11" class="album"></div>-->
+<!--        <div id="album10" class="album"></div>-->
+<!--        <div id="album9" class="album"></div>-->
+<!--        <div id="album8" class="album"></div>-->
+<!--        <div id="album7" class="album"></div>-->
+<!--        <div id="album6" class="album"></div>-->
+<!--        <div id="album5" class="album"></div>-->
+<!--        <div id="album4" class="album"></div>-->
+<!--        <div id="album3" class="album"></div>-->
+<!--        <div id="album2" class="album"></div>-->
+<!--        <div id="album1" class="album"></div>-->
+<!--        <div id="album0" class="album"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div id="greyContainer">-->
+<!--    <div id="greyArea" class="invisible greyArea">-->
+<!--        <div id="bcPlayerUniversal" class="bcPlayer">-->
+<!--            <iframe id="popUpAlbumPlayer" class = "bcPlayer" src="">-->
+<!--            </iframe>    -->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '100%',
+          width: '100%',
+          //listType: 'user_uploads',
+          //list:'BlahSumX',
+          videoId: 'TixDxQ03hDo',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+    var currentTime= 0;
+    var ONE_FRAME_TIME = 100; 
+    var displayTime= currentTime.toString();
+    
+    var mainloop = function() {
+       currentTime=Math.floor(player.getCurrentTime());
+       displayTime= ("00"+Math.floor(currentTime/60).toString()).slice(-2)+":" +("00"+(currentTime%60).toString()).slice(-2);
+       document.getElementById("timer").innerHTML = displayTime;
+    };
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        var duration = player.getDuration();
+        setInterval( mainloop, ONE_FRAME_TIME );
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      function onPlayerStateChange(event) {
+       return null;
+      }
+</script>
+<script>
+        // $(document).ready(function() {
+        // // Function for universal album player
+        //     $("#popUpAlbumPlayer").attr('src', 'about:blank');
+        //     $("#greyArea").click(function(){
+        //         $(this).toggleClass('invisible');
+        //     });
+        // // Function pairs that display/hide bandcamp players
+        //     $("#album0").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/album=207100208/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/'
+        //                                     );
+        //     });
+            
+            
+        //     $("#album1").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 'https://bandcamp.com/EmbeddedPlayer/album=903733940/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/');
+        //     });
+            
+        //     $("#album2").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=1339272009/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album3").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=235501181/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album4").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=3093458227/size=large/bgcol=333333/linkcol=e99708/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album5").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=1122508605/size=large/bgcol=333333/linkcol=2ebd35/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album6").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=3036249471/size=large/bgcol=ffffff/linkcol=63b2cc/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album7").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=3224219858/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album8").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=2384644415/size=large/bgcol=ffffff/linkcol=f171a2/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album9").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=1352766742/size=large/bgcol=ffffff/linkcol=333333/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album10").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=1213776516/size=large/bgcol=333333/linkcol=2ebd35/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album11").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=1224379638/size=large/bgcol=ffffff/linkcol=2ebd35/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album12").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=17738973/size=large/bgcol=ffffff/linkcol=333333/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album13").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=2387233245/size=large/bgcol=333333/linkcol=e99708/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album14").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=1286510330/size=large/bgcol=333333/linkcol=2ebd35/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album15").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=936533880/size=large/bgcol=333333/linkcol=e99708/tracklist=false/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album16").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=2083000408/size=large/bgcol=ffffff/linkcol=de270f/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album17").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=1258757999/size=large/bgcol=333333/linkcol=e99708/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album18").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=681679358/size=large/bgcol=ffffff/linkcol=333333/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album19").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=2967354402/size=large/bgcol=ffffff/linkcol=2ebd35/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album20").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=2154113774/size=large/bgcol=333333/linkcol=9a64ff/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album21").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=551198450/size=large/bgcol=ffffff/linkcol=f171a2/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album22").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=573749066/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album23").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=2912232590/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album24").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=3472718717/size=large/bgcol=333333/linkcol=e32c14/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album25").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=4080426038/size=large/bgcol=333333/linkcol=e32c14/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album26").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=1992715595/size=large/bgcol=ffffff/linkcol=e99708/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album27").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://bandcamp.com/EmbeddedPlayer/track=4136878036/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/'
+        //                                     );
+        //     });
+            
+        //     $("#album28").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/551015097&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
+        //                                     );
+        //     });
+            
+        //     $("#album29").click(function(){
+        //         $("#greyArea").toggleClass('invisible');
+        //         $("#popUpAlbumPlayer").attr('src', 
+        //                                     'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/519195585&color=%235f4680&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
+        //                                     );
+        //     });
+            
+            
+
+        //     return false;
+        // });
+        //illuminati code
+        var konami_keys = [82,65,82,69,80,69,80,69];
+        var konami_index = 0;
+        $(document).keydown(function(e){
+            if(e.keyCode === konami_keys[konami_index++]){
+                if(konami_index === konami_keys.length){
+                    $(document).unbind('keydown', arguments.callee);
+                    $('div').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
+                    $('img').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
+                    $('html').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
+                    $('p').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
+                    $('body').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
+                }
+            }else{
+                konami_index = 0;
+            }
+            return false;
+        });
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58408356-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
