@@ -530,8 +530,8 @@
     
     var mainloop = function() {
        currentTime=Math.round(player.getCurrentTime());
-       timeLeft=Math.max(Math.floor(player.getDuration() - currentTime),0);
-       displayTime= ("00"+Math.floor(timeLeft/60).toString()).slice(-2)+":" +("00"+(timeLeft%60).toString()).slice(-2);
+       timeLeft=Math.floor(player.getDuration() - currentTime);
+       displayTime= ("00"+Math.max(Math.floor(timeLeft/60),0).toString()).slice(-2)+":" +("00"+(Math.max(timeLeft,0)%60).toString()).slice(-2);
        document.getElementById("timer").innerHTML = displayTime;
     };
       // 4. The API will call this function when the video player is ready.
