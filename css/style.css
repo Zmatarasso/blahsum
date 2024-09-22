@@ -908,7 +908,7 @@ ul.pages-music li a {
 /************************************Hero Photos*******************************************/
 
 .hero {
-	background-image: url("../pictures/misc/hero-img.jpg");
+	background-image: url("../pictures/misc/hero-img.jpeg");
 	height: 380px;
 	z-index: 100;
 	margin-bottom: -46px;
@@ -959,7 +959,7 @@ ul.pages-music li a {
 }
 
 .hero {
-	background-image: url("../pictures/misc/hero-img.jpg");
+	background-image: url("../pictures/misc/hero-img.jpeg");
 	height: 320px;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1282,7 +1282,7 @@ div li.hide {
 }
 
 .a {
-	background-image: url("../pictures/misc/hero-img.jpg");
+	background-image: url("../pictures/misc/hero-img.jpeg");
 	background-size: cover;
 }
 
