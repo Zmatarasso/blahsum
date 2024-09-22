@@ -923,7 +923,8 @@ ul.pages-music li a {
 }
 
 .hero, .music-hero {
-	background-position: center;
+	background-position-x: center;
+	background-position-y: 25%;
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
