@@ -914,9 +914,9 @@ ul.pages-music li a {
 	margin-bottom: -46px;
 	border-bottom: .2em solid #000000;
 	background-position-x: center;
-	background-position-y: 32%;
+	background-position-y: 30%;
 	background-repeat: no-repeat;
-	background-size: 75%;
+	background-size: cover;
 	position: relative;
 }
 
