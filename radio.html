@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Live Stream and Chat Embed</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+        }
+        .video-container {
+            flex: 0 0 70%;
+            position: relative;
+            padding-bottom: 39.375%; /* 70% of 56.25% (16:9) */
+            height: 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .chat-container {
+            flex: 0 0 30%;
+            height: 100%;
+        }
+        .chat-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        @media screen and (max-width: 860px) {
+            .video-container {
+                flex: 0 0 100%;
+                padding-bottom: 56.25%; /* 16:9 */
+            }
+            .chat-container {
+                flex: 0 0 100%;
+                height: 50vh; /* Adjust for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/live_stream?channel=BlahSumX&autoplay=1"
+                frameborder="0"
+                allowfullscreen
+                allow="autoplay; encrypted-media"
+            ></iframe>
+        </div>
+        <div class="chat-container">
+            <iframe
+                id="chat-iframe"
+                src="https://www.youtube.com/live_chat?v=VIDEO_ID&embed_domain=YOUR_DOMAIN"
+                frameborder="0"
+                scrolling="no"
+            ></iframe>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript to dynamically update chat video ID -->
+    <script>
+        async function updateChatIframe() {
+            const channelId = 'BlahSumX';
+            const chatIframe = document.getElementById('chat-iframe');
+            const domain = 'blahsum.com';
+
+            try {
+                // Fetch the channel's live stream page
+                const response = await fetch(`https://www.youtube.com/channel/${channelId}/live`);
+                const text = await response.text();
+                
+                // Extract video ID (basic regex, may need refinement)
+                const match = text.match(/"videoId":"([A-Za-z0-9_-]{11})"/);
+                if (match && match[1]) {
+                    const videoId = match[1];
+                    chatIframe.src = `https://www.youtube.com/live_chat?v=${videoId}&embed_domain=${domain}`;
+                } else {
+                    console.error('No live video ID found');
+                    chatIframe.src = ''; // Clear iframe or show placeholder
+                }
+            } catch (error) {
+                console.error('Error fetching video ID:', error);
+                chatIframe.src = ''; // Clear iframe or show placeholder
+            }
+        }
+
+        // Run on page load
+        updateChatIframe();
+    </script>
+</body>
+</html>
