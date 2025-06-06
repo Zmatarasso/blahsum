@@ -13,7 +13,7 @@ jobs:
 
       - name: Update video ID in HTML
         run: |
-          sed -i "s/videoId: '[^']*'/videoID: '${{ github.event.client_payload.video_id }}'/" index.html
+          sed -i "s/videoId: '[^']*'/videoId: '${{ github.event.client_payload.video_id }}'/" index.html
         env:
           VIDEO_ID: ${{ github.event.client_payload.video_id }}
 
