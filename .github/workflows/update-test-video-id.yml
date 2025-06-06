@@ -1,0 +1,57 @@
+name: Update Test HTML Video
+on:
+  repository_dispatch:
+    types: [update-video-id]
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: 'YouTube Video ID'
+        required: false
+jobs:
+  update-test-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Extract video ID from index.html or use input
+        id: get-video-id
+        run: |
+          if [ -f index.html ]; then
+            VIDEO_ID=$(grep -oP "videoId: '\K[\w-]{11}" index.html || echo "")
+            if [ -n "$VIDEO_ID" ]; then
+              echo "Extracted video ID from index.html: $VIDEO_ID"
+              echo "video_id=$VIDEO_ID" >> $GITHUB_OUTPUT
+            else
+              echo "Could not extract video ID from index.html, using input or dispatch"
+              VIDEO_ID="${{ github.event.inputs.video_id || github.event.client_payload.video_id }}"
+              if [ -z "$VIDEO_ID" ]; then
+                echo "Error: No video ID provided"
+                exit 1
+              fi
+              echo "video_id=$VIDEO_ID" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "index.html not found, using input or dispatch"
+            VIDEO_ID="${{ github.event.inputs.video_id || github.event.client_payload.video_id }}"
+            if [ -z "$VIDEO_ID" ]; then
+              echo "Error: No video ID provided"
+              exit 1
+            fi
+            echo "video_id=$VIDEO_ID" >> $GITHUB_OUTPUT
+          fi
+      - name: Update iframe src in test.html
+        run: |
+          if [ ! -f test.html ]; then
+            echo "Error: test.html not found"
+            exit 1
+          fi
+          sed -i "s|src=\"https://www.youtube.com/embed/[^?\"]*|src=\"https://www.youtube.com/embed/${{ steps.get-video-id.outputs.video_id }}|" test.html
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add test.html
+          git commit -m "Update test.html iframe with YouTube video ID ${{ steps.get-video-id.outputs.video_id }}" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
