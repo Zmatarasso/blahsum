@@ -3,6 +3,11 @@ name: Update YouTube Video ID
 on:
   repository_dispatch:
     types: [update-video-id]
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: 'YouTube Video ID to update'
+        required: true
 
 jobs:
   update-video-id:
@@ -15,16 +20,16 @@ jobs:
 
       - name: Update video ID in HTML
         run: |
-          sed -i "s/videoId: '[^']*'/videoId: '${{ github.event.client_payload.video_id }}'/" index.html
+          sed -i "s/videoId: '[^']*'/videoId: '${{ github.event.client_payload.video_id || github.event.inputs.video_id }}'/" index.html
         env:
-          VIDEO_ID: ${{ github.event.client_payload.video_id }}
+          VIDEO_ID: ${{ github.event.client_payload.video_id || github.event.inputs.video_id }}
 
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add index.html
-          git commit -m "Update YouTube video ID to ${{ github.event.client_payload.video_id }}" || echo "No changes to commit"
+          git commit -m "Update YouTube video ID to ${{ github.event.client_payload.video_id || github.event.inputs.video_id }}" || echo "No changes to commit"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
