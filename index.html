@@ -772,17 +772,17 @@
         //     return false;
         // });
         //illuminati code
-        var konami_keys = [82,65,82,69,80,69,80,69];
+        var konami_keys = [100, 101, 97, 100, 52, 101, 118, 101, 114];
         var konami_index = 0;
         $(document).keydown(function(e){
             if(e.keyCode === konami_keys[konami_index++]){
                 if(konami_index === konami_keys.length){
                     $(document).unbind('keydown', arguments.callee);
-                    $('div').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
-                    $('img').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
-                    $('html').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
-                    $('p').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
-                    $('body').css('background-image', 'url("https://i.imgur.com/1lnY9Ec.gif")');
+                    $('div').css('background-image', 'url("pictures/misc/gd_stealie_show.gif")');
+                    $('img').css('background-image', 'url("pictures/misc/gd_stealie_show.gif")');
+                    $('html').css('background-image', 'url("pictures/misc/gd_stealie_show.gif")');
+                    $('p').css('background-image', 'url("pictures/misc/gd_stealie_show.gif")');
+                    $('body').css('background-image', 'url("pictures/misc/gd_stealie_show.gif")');
                 }
             }else{
                 konami_index = 0;
