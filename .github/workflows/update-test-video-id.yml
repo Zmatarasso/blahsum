@@ -45,7 +45,12 @@ jobs:
             echo "Error: test.html not found"
             exit 1
           fi
-          sed -i "s|src=\"https://www.youtube.com/embed/[^?\"]*|src=\"https://www.youtube.com/embed/${{ steps.get-video-id.outputs.video_id }}|" test.html
+
+          # 1. Normal embed:    src="https://www.youtube.com/embed/OLD_ID?..."
+          sed -i "s|src=\"https://www.youtube.com/embed/[^?\"]*|src=\"https://www.youtube.com/embed/${{ steps.get-video-id.outputs.video_id }}|g" test.html
+
+          # 2. Live chat embed:  src="https://www.youtube.com/live_chat?v=OLD_ID&..."
+          sed -i "s|src=\"https://www.youtube.com/live_chat?v=[^&\"]*|src=\"https://www.youtube.com/live_chat?v=${{ steps.get-video-id.outputs.video_id }}|g" test.html
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
