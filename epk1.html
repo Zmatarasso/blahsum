@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Blahsum — EPK · Poster</title>
+<title>Blahsum — EPK · Poster (B&amp;W)</title>
 <meta name="description" content="Blahsum is a psychedelic rap jam band based out of Brooklyn, NY. Electronic press kit.">
-<meta name="theme-color" content="#EEE7D7">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="pictures/icons/favicon-32x32.png">
 <link rel="preload" href="epk-assets/shared/fonts/BigShouldersDisplay-normal-fC1_PZJE.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="epk-assets/shared/fonts/InstrumentSerif-italic-jizHRFtN.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,7 +17,7 @@
 @font-face{font-family:'Instrument Sans';font-weight:400 700;font-display:swap;src:url(epk-assets/shared/fonts/InstrumentSans-normal-pxiTypc9.woff2) format('woff2')}
 
 :root{
-  --paper:#EEE7D7; --paper-2:#E4DBC6; --ink:#151311; --hot:#FF4F1F; --mute:#6F6758;
+  --paper:#FFFFFF; --paper-2:#EDEDED; --ink:#0B0B0B; --hot:#0B0B0B; --ghost:#C9C9C9; --mute:#5C5C5C;
   --display:'Big Shoulders Display',Impact,'Arial Narrow',sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
   --sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -30,10 +30,11 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--sans);overflow-x:clip}
 /* paper grain, one tiny svg */
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.33;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .4 0 0 0 0 .32 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .4 0 0 0 0 .4 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.contact :focus-visible,dialog.lb :focus-visible{outline-color:var(--paper)}
 .skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--paper);padding:8px 12px;z-index:99}
 .skip:focus{left:8px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
@@ -47,7 +48,7 @@ a{color:inherit}
 .mast .id b{font:800 20px/1 var(--display);letter-spacing:.04em}
 .mast nav ul{display:flex;gap:clamp(10px,2vw,28px);list-style:none;margin:0;padding:0}
 .mast nav a{text-decoration:none;position:relative}
-.mast nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--hot);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+.mast nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
 .mast nav a:hover::after,.mast nav a:focus-visible::after{transform:scaleX(1);transform-origin:left}
 @media (max-width:640px){.btn{padding:11px 16px;font-size:15px}.ctas{gap:8px}.mast .id .label{display:none}.mast nav ul{gap:11px;font-size:14.5px}.mast nav li:first-child{display:none}}
 
@@ -61,40 +62,40 @@ a{color:inherit}
 .word path{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .word .o path{stroke:var(--ink);stroke-width:20}
 .word .i path{stroke:var(--paper);stroke-width:9.5}
-.word .s path{stroke:var(--hot);stroke-width:20;opacity:.95}
+.word .s path{stroke:var(--ghost);stroke-width:20;opacity:.95}
 .hero-grid{display:grid;gap:clamp(18px,2.4vw,36px);margin-top:clamp(16px,2.4vw,34px);grid-template-columns:1fr;align-items:end}
 @media (min-width:900px){.hero-grid{grid-template-columns:5fr 7fr}}
 .tag{font:italic 400 clamp(46px,7.4vw,112px)/.9 var(--serif);margin:0;letter-spacing:-.01em}
-.tag em{color:var(--hot);font-style:italic}
+.tag em{font-style:italic;-webkit-text-stroke:1.5px var(--ink);color:transparent}
 .lede{font-size:clamp(17px,1.4vw,20px);max-width:34ch;margin:18px 0 22px}
 .ctas{display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;white-space:nowrap;align-items:center;gap:10px;padding:13px 20px;border:1.5px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:600;
   background:var(--ink);color:var(--paper);transition:background .25s,color .25s,transform .25s var(--ease)}
-.btn:hover{background:var(--hot);border-color:var(--hot);color:var(--ink);transform:translateY(-2px)}
+.btn:hover{background:var(--paper);border-color:var(--ink);color:var(--ink);transform:translateY(-2px);box-shadow:4px 4px 0 var(--ink)}
 .btn.ghost{background:transparent;color:var(--ink)}
 .btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .btn svg{width:16px;height:16px}
 .hero-photo{position:relative;margin:0}
 .hero-photo .frame{overflow:hidden;border:1.5px solid var(--ink);aspect-ratio:2048/1462;background:var(--paper-2)}
-.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(1.08)}
 figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:13px;color:var(--mute)}
 .sticker{position:absolute;width:clamp(104px,12vw,168px);aspect-ratio:1;left:clamp(-28px,-2vw,-12px);top:clamp(-40px,-3vw,-22px);z-index:3}
 .sticker svg{width:100%;height:100%;overflow:visible}
-.sticker .disc{fill:var(--hot)}
-.sticker text{font:700 13.5px var(--sans);letter-spacing:.2em;fill:var(--ink);text-transform:uppercase}
-.sticker .star{fill:var(--ink)}
+.sticker .disc{fill:var(--ink)}
+.sticker text{font:700 13.5px var(--sans);letter-spacing:.2em;fill:var(--paper);text-transform:uppercase}
+.sticker .star{fill:var(--paper)}
 
 /* ---------- marquee ---------- */
 .band{margin-top:clamp(40px,6vw,80px);background:var(--ink);color:var(--paper);overflow:hidden;border-block:1.5px solid var(--ink);transform:rotate(-1.2deg);width:104%;margin-left:-2%}
 .band .track{display:flex;width:max-content;font:800 clamp(34px,5vw,72px)/1.15 var(--display);text-transform:uppercase;letter-spacing:.02em;padding-block:6px}
 .band span{padding-inline:.35em;white-space:nowrap}
-.band span i{color:var(--hot);font-style:normal}
+.band span i{color:var(--paper);font-style:normal;opacity:.55}
 
 /* ---------- sections ---------- */
 section{padding-block:clamp(64px,10vw,140px)}
 .sec-h{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:end;border-bottom:1.5px solid var(--ink);padding-bottom:10px;margin-bottom:clamp(26px,4vw,56px)}
 .sec-h h2{font:900 clamp(56px,10vw,150px)/.82 var(--display);text-transform:uppercase;margin:0;letter-spacing:-.005em}
-.sec-h .num{font:italic 400 clamp(22px,2.4vw,34px)/1 var(--serif);color:var(--hot)}
+.sec-h .num{font:italic 400 clamp(22px,2.4vw,34px)/1 var(--serif);color:var(--mute)}
 .sec-h .label{justify-self:end;grid-column:1/-1;margin-top:-4px}
 @media (min-width:760px){.sec-h{grid-template-columns:auto 1fr auto}.sec-h .label{grid-column:auto;margin:0}}
 
@@ -109,12 +110,12 @@ section{padding-block:clamp(64px,10vw,140px)}
 .facts li span:last-child{text-align:right;font-weight:600}
 .bio p{margin:0 0 1.1em;max-width:62ch}
 .bio .first{font:400 clamp(26px,2.8vw,40px)/1.18 var(--serif);max-width:28ch;margin-bottom:.9em;text-wrap:balance}
-.bio .first em{color:var(--hot)}
-.bio mark{background:linear-gradient(transparent 58%,color-mix(in oklab,var(--hot) 55%,transparent) 0);color:inherit;padding:0 .1em}
+.bio .first em{font-style:italic;background:var(--ink);color:var(--paper);padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.bio mark{background:linear-gradient(transparent 60%,var(--ghost) 0);color:inherit;padding:0 .1em}
 
 .statement{padding-block:clamp(40px,8vw,120px) clamp(20px,4vw,40px)}
 .statement p{font:400 clamp(34px,5.6vw,92px)/1.02 var(--serif);margin:0;text-wrap:balance;letter-spacing:-.015em}
-.statement p b{display:block;font:900 clamp(40px,13.8vw,250px)/.8 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin-top:.12em;color:var(--hot)}
+.statement p b{display:block;font:900 clamp(40px,13.8vw,250px)/.8 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin-top:.12em;color:var(--ink)}
 
 .full{position:relative;margin:0}
 .full .frame{overflow:hidden;border-block:1.5px solid var(--ink);height:min(92svh,1100px)}
@@ -124,7 +125,7 @@ section{padding-block:clamp(64px,10vw,140px)}
 /* lineup */
 .lineup{list-style:none;margin:0;padding:0;counter-reset:m}
 .lineup li{counter-increment:m;display:grid;grid-template-columns:3.2ch 1fr;align-items:baseline;gap:6px 18px;padding:clamp(12px,1.6vw,20px) 4px;border-bottom:1.5px solid var(--ink);position:relative;isolation:isolate}
-.lineup li::before{content:counter(m,decimal-leading-zero);font:italic 400 20px/1 var(--serif);color:var(--hot)}
+.lineup li::before{content:counter(m,decimal-leading-zero);font:italic 400 20px/1 var(--serif);color:inherit;opacity:.6}
 .lineup li::after{content:"";position:absolute;inset:0;background:var(--ink);z-index:-1;clip-path:inset(0 100% 0 0);transition:clip-path .45s var(--ease)}
 .lineup li:hover::after{clip-path:inset(0 0 0 0)}
 .lineup li:hover{color:var(--paper)}
@@ -136,25 +137,26 @@ section{padding-block:clamp(64px,10vw,140px)}
 .feature{display:grid;gap:clamp(20px,3vw,48px);align-items:center}
 @media (min-width:860px){.feature{grid-template-columns:5fr 7fr}}
 .cover{position:relative;border:1.5px solid var(--ink);box-shadow:10px 10px 0 var(--ink);background:var(--paper-2)}
-.cover img{width:100%;aspect-ratio:1;object-fit:cover}
+.cover img{width:100%;aspect-ratio:1;object-fit:cover;filter:grayscale(1) contrast(1.1);transition:filter .6s}
+.cover:hover img{filter:none}
 .feature h3{font:900 clamp(48px,7vw,104px)/.85 var(--display);text-transform:uppercase;margin:6px 0 16px}
-.feature h3 span{display:block;font:italic 400 .42em/1.1 var(--serif);text-transform:none;color:var(--hot);margin-top:.15em}
+.feature h3 span{display:block;font:italic 400 .42em/1.1 var(--serif);text-transform:none;color:var(--mute);margin-top:.15em}
 .plat{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
 .plat a{display:inline-block;padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s,color .2s}
 .plat a:hover{background:var(--ink);color:var(--paper)}
 .player{margin-top:22px}
 .player button{all:unset;cursor:pointer;display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;padding:14px 16px;border:1.5px dashed var(--ink);font-weight:600}
 .player button:hover{background:var(--paper-2)}
-.player button:focus-visible{outline:3px solid var(--hot)}
-.player .dot{width:38px;height:38px;border-radius:50%;background:var(--hot);display:grid;place-items:center;flex:none}
+.player button:focus-visible{outline:3px solid var(--ink)}
+.player .dot{width:38px;height:38px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none}
 .spotify-frame{width:100%;height:352px;border:0;border-radius:12px;display:block}
 .disco{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,28px);margin-top:clamp(48px,7vw,96px);list-style:none;padding:0}
 @media (min-width:700px){.disco{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:1100px){.disco{grid-template-columns:repeat(6,1fr)}}
 .disco a{text-decoration:none;display:block}
 .disco .c{border:1.5px solid var(--ink);overflow:hidden;background:var(--paper-2)}
-.disco img{aspect-ratio:1;object-fit:cover;width:100%;transition:transform .5s var(--ease)}
-.disco a:hover img{transform:scale(1.06) rotate(-1deg)}
+.disco img{aspect-ratio:1;object-fit:cover;width:100%;filter:grayscale(1) contrast(1.1);transition:transform .5s var(--ease),filter .5s}
+.disco a:hover img,.disco a:focus-visible img{transform:scale(1.06) rotate(-1deg);filter:none}
 .disco b{display:block;font:800 22px/1 var(--display);text-transform:uppercase;margin-top:10px}
 .disco small{color:var(--mute);font-size:13px}
 
@@ -162,21 +164,21 @@ section{padding-block:clamp(64px,10vw,140px)}
 .vids{display:grid;gap:clamp(18px,2.4vw,32px)}
 @media (min-width:760px){.vids{grid-template-columns:1fr 1fr}}
 .vid h3{font:800 clamp(26px,2.6vw,38px)/1 var(--display);text-transform:uppercase;margin:0 0 10px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.vid h3 small{font:italic 400 18px/1 var(--serif);color:var(--hot);text-transform:none}
+.vid h3 small{font:italic 400 18px/1 var(--serif);color:var(--mute);text-transform:none}
 .yt{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:block;width:100%;aspect-ratio:16/9;background:var(--ink);border:1.5px solid var(--ink);overflow:hidden}
 iframe.yt{border:1.5px solid var(--ink)}
 .yt img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);transition:filter .5s,transform .7s var(--ease)}
 .yt:hover img,.yt:focus-visible img{filter:none;transform:scale(1.03)}
-.yt .pl{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--hot);display:grid;place-items:center;transition:transform .35s var(--ease)}
+.yt .pl{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--paper);display:grid;place-items:center;transition:transform .35s var(--ease)}
 .yt:hover .pl{transform:scale(1.12)}
-.yt:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.yt:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 
 /* photos */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.2vw,16px);grid-auto-flow:dense}
 .grid button{all:unset;cursor:zoom-in;display:block;position:relative;overflow:hidden;border:1.5px solid var(--ink);background:var(--paper-2)}
-.grid button:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
-.grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.grid button:hover img{transform:scale(1.04)}
+.grid button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.grid img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.12);transition:transform .6s var(--ease),filter .6s}
+.grid button:hover img,.grid button:focus-visible img{transform:scale(1.04);filter:none}
 .grid .tall{grid-row:span 2}
 @media (max-width:899px){.grid button{aspect-ratio:4/3}.grid .wide{grid-column:span 2}.grid .tall{aspect-ratio:3/4.5}}
 
@@ -198,19 +200,20 @@ dialog.lb::backdrop{background:color-mix(in oklab,var(--ink) 92%,transparent)}
 dialog.lb .in{display:grid;gap:10px;justify-items:center;padding:16px;max-width:100%}
 dialog.lb img{max-width:min(94vw,1600px);max-height:80dvh;width:auto;height:auto;border:1.5px solid var(--paper)}
 dialog.lb .bar{display:flex;gap:16px;align-items:center;color:var(--paper);font-size:14px;flex-wrap:wrap;justify-content:center}
-dialog.lb a{color:var(--hot)}
+dialog.lb a{color:var(--paper)}
 .lb-x{all:unset;cursor:pointer;position:fixed;top:14px;right:16px;color:var(--paper);font:800 18px/1 var(--display);letter-spacing:.1em;padding:10px;border:1.5px solid var(--paper);border-radius:999px}
-.lb-x:focus-visible{outline:3px solid var(--hot)}
+.lb-x:focus-visible{outline:3px solid var(--paper)}
 ::view-transition-group(lb-photo){animation-duration:.5s;animation-timing-function:var(--ease)}
 
 /* contact */
 .contact{background:var(--ink);color:var(--paper);padding:clamp(64px,10vw,140px) var(--pad) 28px;position:relative;overflow:hidden}
 .contact .sec-h{border-color:var(--paper)}
-.contact h2 em{font:italic 400 .5em/1 var(--serif);text-transform:none;color:var(--hot);display:block}
+.contact h2 em{font:italic 400 .5em/1 var(--serif);text-transform:none;color:color-mix(in oklab,var(--paper) 70%,transparent);display:block}
 .links{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--paper)}
 .links a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:clamp(14px,1.8vw,22px) 2px;border-bottom:1.5px solid color-mix(in oklab,var(--paper) 35%,transparent);text-decoration:none;font:800 clamp(32px,5vw,72px)/1 var(--display);text-transform:uppercase;transition:color .25s,padding .35s var(--ease)}
 .links a span{font:400 clamp(14px,1.2vw,17px)/1.2 var(--sans);text-transform:none;color:color-mix(in oklab,var(--paper) 65%,transparent);text-align:right}
-.links a:hover{color:var(--hot);padding-left:14px}
+.links a:hover,.links a:focus-visible{background:var(--paper);color:var(--ink);padding-left:14px}
+.links a:hover span,.links a:focus-visible span{color:var(--ink)}
 .contact .note{max-width:52ch;margin:0 0 28px;font-size:clamp(17px,1.4vw,20px)}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:clamp(56px,8vw,100px);font-size:13px;color:color-mix(in oklab,var(--paper) 60%,transparent)}
 .foot .mini{width:84px;opacity:.9}
@@ -246,7 +249,7 @@ dialog.lb a{color:var(--hot)}
   @keyframes tile{from{clip-path:inset(100% 0 0 0);transform:translateY(40px)}to{clip-path:inset(0);transform:none}}
   .statement p{background:linear-gradient(var(--ink),var(--ink)) 0 0/100% 0% no-repeat,color-mix(in oklab,var(--ink) 18%,var(--paper));-webkit-background-clip:text;background-clip:text;color:transparent;
     animation:fill linear both;animation-timeline:view();animation-range:entry 30% cover 55%}
-  .statement p b{-webkit-text-fill-color:var(--hot);opacity:.15;animation:litup linear both;animation-timeline:view();animation-range:entry 80% cover 55%}
+  .statement p b{-webkit-text-fill-color:var(--ink);opacity:.15;animation:litup linear both;animation-timeline:view();animation-range:entry 80% cover 55%}
   @keyframes fill{to{background-size:100% 100%,auto}}
   @keyframes litup{to{opacity:1}}
   .disco li{animation:deal linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
@@ -362,7 +365,7 @@ main:focus{outline:none}
       <span class="label">Featured live record</span>
       <h3>Live at Rockaway Beach<span>Blahsum Summer Jam</span></h3>
       <a class="btn" href="https://open.spotify.com/album/2tPVzNhSrSD9UI7L6cBmHL?si=ZHlclCVFRJKKAIIaT7Bg-w">Stream</a>
-      <div class="player"><button type="button" data-spotify="album/2tPVzNhSrSD9UI7L6cBmHL" data-title="Live at Rockaway Beach on Spotify"><span class="dot"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#151311"/></svg></span>Play it right here (loads Spotify player)</button></div>
+      <div class="player"><button type="button" data-spotify="album/2tPVzNhSrSD9UI7L6cBmHL" data-title="Live at Rockaway Beach on Spotify"><span class="dot"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#fff"/></svg></span>Play it right here (loads Spotify player)</button></div>
       <ul class="plat" aria-label="Streaming platforms">
         <li><a href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt">Spotify</a></li>
         <li><a href="https://music.apple.com/us/artist/blahsum/945248239">Apple Music</a></li>
@@ -386,10 +389,10 @@ main:focus{outline:none}
 <section id="watch" class="wrap" aria-labelledby="watch-h">
   <div class="sec-h"><span class="num">04</span><h2 id="watch-h">Watch</h2><span class="label">Videos</span></div>
   <div class="vids">
-    <div class="vid"><h3>Uncle Gabe’s Band <small>01</small></h3><button class="yt" type="button" data-yt="bQXSdhBLWg8" data-title="Uncle Gabe's Band"><img src="https://i.ytimg.com/vi/bQXSdhBLWg8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#151311"/></svg></span><span class="vh">Play video: Uncle Gabe’s Band</span></button></div>
-    <div class="vid"><h3>Way Too Long <small>02</small></h3><button class="yt" type="button" data-yt="-ZTp4umFVtc" data-title="Way Too Long"><img src="https://i.ytimg.com/vi/-ZTp4umFVtc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#151311"/></svg></span><span class="vh">Play video: Way Too Long</span></button></div>
-    <div class="vid"><h3>West LA Fade Away <small>03</small></h3><button class="yt" type="button" data-yt="4PDDvqUrdH0" data-title="West LA Fade Away"><img src="https://i.ytimg.com/vi/4PDDvqUrdH0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#151311"/></svg></span><span class="vh">Play video: West LA Fade Away</span></button></div>
-    <div class="vid"><h3>Blahsum Is <small>04</small></h3><button class="yt" type="button" data-yt="7TtFuV5DTn0" data-title="Blahsum Is"><img src="https://i.ytimg.com/vi/7TtFuV5DTn0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#151311"/></svg></span><span class="vh">Play video: Blahsum Is</span></button></div>
+    <div class="vid"><h3>Uncle Gabe’s Band <small>01</small></h3><button class="yt" type="button" data-yt="bQXSdhBLWg8" data-title="Uncle Gabe's Band"><img src="https://i.ytimg.com/vi/bQXSdhBLWg8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: Uncle Gabe’s Band</span></button></div>
+    <div class="vid"><h3>Way Too Long <small>02</small></h3><button class="yt" type="button" data-yt="-ZTp4umFVtc" data-title="Way Too Long"><img src="https://i.ytimg.com/vi/-ZTp4umFVtc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: Way Too Long</span></button></div>
+    <div class="vid"><h3>West LA Fade Away <small>03</small></h3><button class="yt" type="button" data-yt="4PDDvqUrdH0" data-title="West LA Fade Away"><img src="https://i.ytimg.com/vi/4PDDvqUrdH0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: West LA Fade Away</span></button></div>
+    <div class="vid"><h3>Blahsum Is <small>04</small></h3><button class="yt" type="button" data-yt="7TtFuV5DTn0" data-title="Blahsum Is"><img src="https://i.ytimg.com/vi/7TtFuV5DTn0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: Blahsum Is</span></button></div>
   </div>
   <p style="margin-top:24px"><a class="btn ghost" href="https://www.youtube.com/@BlahSumX">More on YouTube ↗</a></p>
 </section>

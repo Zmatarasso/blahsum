@@ -1,287 +1,385 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Blahsum — EPK (Stage)</title>
-<meta name="description" content="Blahsum electronic press kit: psychedelic rap jam band from Brooklyn, NY. Post-Americana live.">
-<meta name="theme-color" content="#0a0908">
-<link rel="icon" href="pictures/icons/favicon-32x32.png" type="image/png">
-<link rel="preload" href="epk-assets/shared/stage45/fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="epk-assets/shared/stage45/fonts/Shrikhand-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js" crossorigin>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
-<script>document.documentElement.classList.replace('no-js','js')</script>
+<title>Blahsum — EPK · Stencil &amp; Patch</title>
+<meta name="description" content="Blahsum is a psychedelic rap jam band based out of Brooklyn, NY. Electronic press kit.">
+<meta name="theme-color" content="#121212">
+<link rel="icon" href="pictures/icons/favicon-32x32.png">
+<link rel="preload" href="epk-assets/r2/fonts/RubikWetPaint-caps.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="epk-assets/r2/fonts/BigShouldersStencilDisplay.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:"Bricolage";src:url(epk-assets/shared/stage45/fonts/BricolageGrotesque-latin.woff2) format("woff2");font-weight:400 800;font-display:swap}
-@font-face{font-family:"Shrikhand";src:url(epk-assets/shared/stage45/fonts/Shrikhand-latin.woff2) format("woff2");font-weight:400;font-display:swap}
-:root{--bg:#0a0908;--bg2:#141210;--ink:#f3eee4;--mute:#a9a299;--line:rgba(243,238,228,.14);--glow:#ffc56e;--ink-dark:#2a1c10;
-  --sans:"Bricolage",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--script:"Shrikhand","Bricolage",cursive;
-  --pad:clamp(16px,3.4vw,40px);--out:cubic-bezier(.2,.8,.2,1);
-  --spring:linear(0, .009, .035 2.1%, .141, .281 6.7%, .723 12.9%, .938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, .991, .977 51%, .974 53.8%, .975 57.1%, .997 69.8%, 1.003 76.9%, 1.004 83.8%, 1);
-  --panel:min(460px,100vw);color-scheme:dark}
+@font-face{font-family:'Rubik Wet Paint';font-weight:400;font-display:swap;src:url(epk-assets/r2/fonts/RubikWetPaint-caps.woff2) format('woff2')}
+@font-face{font-family:'Big Shoulders Stencil';font-weight:100 900;font-display:swap;src:url(epk-assets/r2/fonts/BigShouldersStencilDisplay.woff2) format('woff2')}
+@font-face{font-family:'Instrument Sans';font-weight:400 700;font-display:swap;src:url(epk-assets/shared/fonts/InstrumentSans-normal-pxiTypc9.woff2) format('woff2')}
+
 *,*::before,*::after{box-sizing:border-box}
-html{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-text-size-adjust:100%}
-body{margin:0;font-size:clamp(15px,.6vw + 12px,18px);line-height:1.6}
-img{max-width:100%;display:block}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:6px}
-h2:focus,h2:focus-visible,.info:focus{outline:none}
-.sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0}
-.skip{position:fixed;left:12px;top:12px;z-index:200;background:var(--glow);color:#1a1209;padding:10px 14px;border-radius:999px;font-weight:700;text-decoration:none;transform:translateY(-220%);transition:transform .2s}
-.skip:focus{transform:none}
-.btn{display:inline-flex;align-items:center;gap:.5em;padding:.7em 1.15em;border-radius:999px;font-weight:700;font-size:clamp(13px,.4vw + 11px,15px);text-decoration:none;border:1px solid var(--line);background:rgba(20,18,16,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);cursor:pointer;transition:transform .3s var(--spring),background .25s,color .25s,border-color .25s;white-space:nowrap}
-.btn:hover{transform:translateY(-2px);border-color:rgba(255,197,110,.6)}
-.btn.hot{background:var(--glow);color:#1c130a;border-color:transparent}
-.btn svg{width:1.05em;height:1.05em;flex:none}
-
-/* ---------- stage app ---------- */
-#app{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--bg) url(data:image/webp;base64,UklGRtoBAABXRUJQVlA4IM4BAAAQCgCdASooACgAPu1uqlEppqOiqrqpWTAdiWkAEglaPypq/3BDTGNBE1yy9HrwDJjGYEMaE5ZDCprPyLDvOsofDn0IQoNjlwnTjr41eF+AncPfpvDWowiAAAD+0eEPZA+vCSwN8IrTUNCLiHJLhM87tpvwQ6fZ+4ucvdYGI+oDDPgQ9YtZZwy75n1QIuYHt0O/hvr9u/gTI9Q8Gklu79Wr5d9SOC14MIsxxZv/XBi1Twm+HFYHcCCi2MaR71pMXojibC/bkVqyPZjswtssSvsAHxSe6oWmnSPNT0skQ9Ps/bZJVOnwjf/NeS8ik+zpzOUpZzY5A1M9BFz0uQjzU1Pmy774N3l/Osbcs5lXVmKFAQ6l0Uc3KHWTepKYeUV0jJKj0bUffs1AugPKqAwqXG3S9NgVAdfDJaDQ2ZXnuDteQv2c4PXXBV/MNypljOElG4uicZGTkEmx3OcJ1jwizM15wVNehg0yeqOzY7K3zsMVHFiDrcxv4RnKypiWMeN5K0t68AF7q2AQ3UeEPa8JLGbSDi7VeKUm9x28vGZbOnZbjyNcNynHx1WXaXcopOpgLh2uY6pGMcRgC9eXqq8HmBN/2xvQfC/FUMNNZAAAAAA=) center/cover no-repeat;isolation:isolate}
-#app .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:opacity 1.2s var(--out)}
-#app .poster:not([src]){display:none}
-#gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab;opacity:0;transition:opacity 1s}
-#gl:active{cursor:grabbing}
-.gl-on #gl{opacity:1}
-.gl-on #app .poster{opacity:0;pointer-events:none}
-.gl-on #app{position:fixed;inset:0;height:auto;background:var(--bg)}
-.hud{position:absolute;z-index:20;pointer-events:none}
-.hud>*{pointer-events:auto}
-.hud-top{inset:0 0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:max(14px,env(safe-area-inset-top)) var(--pad) 0}
-.brand{display:grid;gap:4px;text-decoration:none}
-.brand svg{width:clamp(120px,13vw,190px);height:auto;color:var(--ink);filter:drop-shadow(0 2px 14px rgba(0,0,0,.7))}
-.brand span{font-family:var(--script);color:var(--glow);font-size:clamp(15px,1.3vw,20px);transform:rotate(-3deg);transform-origin:left;text-shadow:0 2px 12px rgba(0,0,0,.8)}
-.dock{inset:auto 0 0;display:flex;justify-content:center;padding:0 var(--pad) max(16px,env(safe-area-inset-bottom))}
-.dock ul{list-style:none;margin:0;padding:6px;display:flex;gap:4px;border-radius:999px;background:rgba(14,12,10,.62);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border:1px solid var(--line);box-shadow:0 20px 50px -20px #000;overflow-x:auto;scrollbar-width:none;max-width:100%}
-.dock button{all:unset;cursor:pointer;padding:9px clamp(10px,1.4vw,18px);border-radius:999px;font-weight:650;font-size:clamp(13px,.4vw + 11px,15px);white-space:nowrap;transition:background .25s,color .25s}
-.dock button:hover,.dock button[aria-pressed="true"]{background:var(--glow);color:#1c130a}
-.dock button:focus-visible{outline:2px solid var(--glow);outline-offset:2px}
-.credit{right:var(--pad);bottom:max(84px,calc(env(safe-area-inset-bottom) + 76px));margin:0;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,238,228,.5)}
-.hint{left:50%;bottom:max(86px,calc(env(safe-area-inset-bottom) + 78px));translate:-50% 0;margin:0;padding:8px 14px;border-radius:999px;background:rgba(14,12,10,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:13px;color:var(--mute);white-space:nowrap;opacity:0;transition:opacity .8s;pointer-events:none}
-.show-hint .hint{opacity:1}
-.loader{inset:0;display:grid;place-content:center;justify-items:center;gap:14px;background:rgba(10,9,8,.55);transition:opacity .8s;pointer-events:none}
-.loader p{margin:0;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
-.loader i{display:block;width:180px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--glow) var(--p,0%),rgba(243,238,228,.15) 0);transition:--p .3s}
-.no-js .loader,.no-gl .loader,.ready .loader{opacity:0;visibility:hidden;transition:opacity .8s,visibility 0s .8s}
-.no-js .dock,.no-gl .dock,.no-js .hint,.no-gl .hint{display:none}
-
-/* hotspots */
-#spots{position:absolute;inset:0;z-index:15;pointer-events:none}
-.spot{all:unset;box-sizing:border-box;pointer-events:auto;cursor:pointer;position:absolute;left:0;top:0;display:flex;align-items:center;gap:8px;translate:-11px -11px;opacity:0;transition:opacity .5s var(--out)}
-.ready .spot.vis{opacity:1}
-.spot i{position:relative;flex:none;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle,#fff 0 3px,var(--glow) 4px 6px,rgba(255,197,110,.0) 7px);}
-.spot i::before,.spot i::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--glow);animation:ping 2.4s var(--out) infinite}
-.spot i::after{animation-delay:1.2s}
-@keyframes ping{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.1);opacity:0}}
-.spot b{padding:5px 11px;border-radius:999px;background:rgba(14,12,10,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,197,110,.35);font-size:13px;font-weight:700;white-space:nowrap;transition:background .25s,color .25s,transform .3s var(--spring)}
-.spot.member i{width:16px;height:16px;translate:3px 0;background:radial-gradient(circle,#fff 0 2px,rgba(255,197,110,.9) 3px 4px,transparent 5px)}
-.spot.member i::after{display:none}
-.spot.member b{opacity:0;transform:translateX(-6px);font-weight:600}
-.spot:hover b,.spot:focus-visible b{background:var(--glow);color:#1c130a;opacity:1;transform:none}
-.spot:focus-visible{outline:none}.spot:focus-visible i{outline:2px solid #fff;outline-offset:4px}
-@media (hover:none){.spot.member b{display:none}}
-
-/* ---------- info (accessible fallback + panels) ---------- */
-.info{position:relative;background:var(--bg)}
-.info-head{display:none}
-.info section{padding:clamp(48px,7vw,96px) var(--pad);max-width:1080px;margin:0 auto;border-top:1px solid var(--line)}
-.kicker{display:inline-block;font-family:var(--script);color:var(--glow);font-size:clamp(24px,2.4vw,34px);line-height:1;transform:rotate(-4deg);margin:0 0 .35em}
-h2{font-size:clamp(32px,4.6vw,60px);line-height:.98;letter-spacing:-.025em;margin:0 0 .5em;font-weight:800;font-variation-settings:"opsz" 96}
-.lede{font-size:clamp(20px,1.6vw + 10px,30px);line-height:1.2;font-weight:600;letter-spacing:-.01em;margin:0 0 1em;text-wrap:balance}
-.lede em,.pa{font-style:normal;color:var(--glow)}
-.pa{font-family:var(--script);white-space:nowrap}
-.info p{text-wrap:pretty}
-.cols{display:grid;gap:clamp(20px,4vw,56px)}
-@media (min-width:900px){.info:not(.panel) .cols{grid-template-columns:1fr 1fr}}
-.lineup{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.lineup li{background:var(--bg);padding:14px 16px;display:grid}
-.lineup b{font-size:1.05em}.lineup span{color:var(--mute);font-size:.86em}
-.lineup li.hl{background:#1d1812}
-.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:22px 0 0}
-.chips a{display:inline-flex;padding:.55em .95em;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:.9em;transition:border-color .25s,color .25s}
-.chips a:hover{border-color:var(--glow);color:var(--glow)}
-.album{display:grid;gap:22px;align-items:center}
-@media (min-width:700px){.info:not(.panel) .album{grid-template-columns:minmax(0,340px) 1fr}}
-.cover{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#1a1816;box-shadow:0 0 0 1px var(--line)}
-.cover img,.cover iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
-.cover .btn{position:absolute;right:12px;bottom:12px}
-.vids{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
-.info.panel .vids{grid-template-columns:1fr}
-.vid{margin:0}
-.vid .frame{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#151311;box-shadow:0 0 0 1px var(--line)}
-.vid .frame button{all:unset;position:absolute;inset:0;cursor:pointer}
-.vid .frame img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .5s}
-.vid .frame button:hover img,.vid .frame button:focus-visible img{filter:none}
-.vid .frame button::after{content:"";position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:var(--glow) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%231c130a'/%3E%3C/svg%3E") 56% 50%/26px no-repeat}
-.vid .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vid figcaption{margin-top:8px;font-weight:700}
-.photos{display:grid;gap:8px;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(90px,14vw,190px);grid-auto-flow:dense}
-.info.panel .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
-.photos button{all:unset;cursor:zoom-in;border-radius:10px;overflow:hidden;background:#151311}
-.photos button.tall{grid-row:span 2}
-.photos img{width:100%;height:100%;object-fit:cover;filter:grayscale(.8);transition:filter .5s,transform .8s var(--out)}
-.photos button:hover img,.photos button:focus-visible img{filter:none;transform:scale(1.04)}
-.photos button:focus-visible{outline:2px solid var(--glow);outline-offset:2px}
-.rows{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
-.rows a{display:grid;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(243,238,228,.03);text-decoration:none;transition:border-color .25s}
-.rows a:hover{border-color:var(--glow)}
-.rows span{color:var(--mute);font-size:.86em}
-.muted{color:var(--mute)}
-.member-card{display:none}
-.info footer{padding:40px var(--pad) 120px;max-width:1080px;margin:0 auto;color:var(--mute);font-size:.86em;border-top:1px solid var(--line)}
-
-/* GL mode: info becomes a drawer (panel) or a full overlay (all) */
-.gl-on .info{position:fixed;z-index:60;top:0;right:0;bottom:0;width:var(--panel);overflow:auto;overscroll-behavior:contain;
-  background:rgba(12,11,9,.86);backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);border-left:1px solid var(--line);
-  transform:translateX(104%);visibility:hidden;transition:transform .55s var(--out),visibility 0s .55s,width .4s var(--out)}
-.gl-on .info.open{transform:none;visibility:visible;transition:transform .55s var(--out),visibility 0s}
-.gl-on .info.all{width:100vw;background:rgba(10,9,8,.97)}
-.gl-on .info-head{display:flex;position:sticky;top:0;z-index:2;justify-content:space-between;gap:8px;padding:14px var(--pad);background:linear-gradient(rgba(12,11,9,.95) 60%,rgba(12,11,9,0))}
-.gl-on .info.panel section{display:none;border:0;padding:8px var(--pad) 40px}
-.gl-on .info.panel section.active{display:block;animation:pin .5s var(--out)}
-.gl-on .info.panel footer{display:none}
-.gl-on .info.panel h2{font-size:clamp(30px,3vw,44px)}
-.gl-on .info.panel .member-card.active{display:block}
-@keyframes pin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@media (max-width:700px){
-  .gl-on .info{top:auto;left:0;width:100%;height:min(74svh,640px);border-left:0;border-top:1px solid var(--line);border-radius:22px 22px 0 0;transform:translateY(104%)}
-  .gl-on .info.all{height:100svh;border-radius:0}
-  .gl-on .info.panel .info-head::before{content:"";position:absolute;left:50%;top:6px;width:40px;height:4px;margin-left:-20px;border-radius:4px;background:rgba(243,238,228,.3)}
-  .panel-open .dock{opacity:0;pointer-events:none}
+.skip{position:absolute;left:-999px;top:8px;background:#000;color:#fff;padding:8px 12px;z-index:999}
+.skip:focus{left:8px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+main:focus{outline:none}
+.spotify-frame{width:100%;height:352px;border:0;border-radius:12px;display:block}
+.yt{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:block;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover}
+iframe.yt{border:0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.2vw,16px);grid-auto-flow:dense}
+.grid button{all:unset;cursor:zoom-in;display:block;position:relative;overflow:hidden}
+.grid img{width:100%;height:100%;object-fit:cover}
+.grid .tall{grid-row:span 2}
+@media (max-width:899px){.grid button{aspect-ratio:4/3}.grid .wide{grid-column:span 2}.grid .tall{aspect-ratio:3/4.5}}
+@media (min-width:900px){
+  .grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(120px,11vw,190px)}
+  .grid .p1{grid-area:1/1/3/4}.grid .p2{grid-area:1/4/3/5}.grid .p3{grid-area:1/5/2/7}.grid .p4{grid-area:2/5/3/7}
+  .grid .p5{grid-area:3/2/5/5}.grid .p6{grid-area:3/5/5/7}.grid .p7{grid-area:3/1/5/2}
+  .grid .p8{grid-area:5/1/7/4}.grid .p9{grid-area:5/4/6/6}.grid .p10{grid-area:5/6/7/7}.grid .p11{grid-area:6/4/7/6}
+  .grid .p12{grid-area:7/1/9/4}.grid .p13{grid-area:7/4/9/7}
 }
-.gl-on.panel-open .hint{opacity:0}
+dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100dvh;margin:0;display:none;place-items:center;overflow:hidden}
+dialog.lb[open]{display:grid}
+dialog.lb::backdrop{background:rgba(0,0,0,.93)}
+dialog.lb .in{display:grid;gap:10px;justify-items:center;padding:16px;max-width:100%}
+dialog.lb img{max-width:min(94vw,1600px);max-height:80dvh;width:auto;height:auto;border:2px solid #fff}
+dialog.lb .bar{display:flex;gap:16px;align-items:center;color:#fff;font:14px/1.3 system-ui,sans-serif;flex-wrap:wrap;justify-content:center}
+dialog.lb a{color:#fff}
+.lb-x{all:unset;cursor:pointer;position:fixed;top:14px;right:16px;color:#fff;font:700 15px/1 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;border:2px solid #fff}
+dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
+::view-transition-group(lb-photo){animation-duration:.45s;animation-timing-function:cubic-bezier(.2,.7,0,1)}
 
-/* lightbox */
-dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100svh;color:var(--ink)}
-dialog.lb::backdrop{background:rgba(5,5,5,.93)}
-.lb figure{margin:0;position:absolute;inset:56px 12px 70px;display:grid;place-items:center}
-.lb img{max-width:calc(100vw - 24px);max-height:calc(100svh - 132px);object-fit:contain;border-radius:8px}
-.lb .bar{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px}
-.lb .x{position:absolute;right:12px;top:12px}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+@property --spray{syntax:'<percentage>';inherits:false;initial-value:130%}
+@property --sew{syntax:'<angle>';inherits:false;initial-value:360deg}
+:root{--bg:#121212;--ink:#F4F4F0;--dim:#A9A9A4;--pad:clamp(14px,3vw,44px);
+ --wet:'Rubik Wet Paint','Big Shoulders Stencil',Impact,sans-serif;--sten:'Big Shoulders Stencil','Big Shoulders Display',Impact,sans-serif;--sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--ease:cubic-bezier(.2,.7,0,1);color-scheme:dark}
+body{color:var(--ink);font:400 17px/1.55 var(--sans);background:
+ repeating-linear-gradient(135deg,rgba(255,255,255,.028) 0 2px,transparent 2px 5px),
+ repeating-linear-gradient(45deg,rgba(0,0,0,.25) 0 1px,transparent 1px 6px),var(--bg)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.18;mix-blend-mode:screen;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+:focus-visible{outline:3px dashed var(--ink);outline-offset:4px}
+.spray{text-shadow:0 0 .08em rgba(244,244,240,.45),0 0 .3em rgba(244,244,240,.12)}
+.mast{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px var(--pad);background:rgba(18,18,18,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:2px dashed rgba(244,244,240,.5)}
+.mast .id{font:900 24px/1 var(--sten);letter-spacing:.06em;text-decoration:none}
+.mast ul{display:flex;gap:clamp(8px,1.6vw,20px);list-style:none;margin:0;padding:0}
+.mast nav a{text-decoration:none;font:700 13px/1 var(--sans);text-transform:uppercase;letter-spacing:.14em;padding:8px 10px;border:2px solid transparent;border-radius:999px}
+.mast nav a:hover,.mast nav a:focus-visible{border-color:var(--ink);border-style:dashed}
+@media (max-width:640px){.mast nav li:first-child{display:none}.mast nav a{font-size:11.5px;letter-spacing:.06em;padding:6px 5px}.mast ul{gap:4px}.mast .id{font-size:20px}}
+/* hero */
+.hero{padding:clamp(18px,3vw,40px) var(--pad) 0;position:relative;max-width:1440px;margin:0 auto}
+.word{margin:0;font:400 clamp(56px,17.4vw,290px)/.9 var(--wet);text-align:center;letter-spacing:.01em;
+ -webkit-mask-image:linear-gradient(100deg,#000 calc(var(--spray) - 14%),transparent var(--spray));mask-image:linear-gradient(100deg,#000 calc(var(--spray) - 14%),transparent var(--spray))}
+.sub{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;margin-top:clamp(4px,1vw,10px);font:900 clamp(16px,1.8vw,26px)/1 var(--sten);text-transform:uppercase;letter-spacing:.18em;color:var(--dim)}
+.hgrid{display:grid;gap:clamp(22px,3vw,48px);margin-top:clamp(20px,3vw,44px);align-items:center}
+@media (min-width:900px){.hgrid{grid-template-columns:7fr 5fr}}
+.hgrid>*{min-width:0}
+/* back patch */
+.patch{position:relative;margin:0;background:#050505;border-radius:28px;padding:clamp(12px,1.6vw,20px);box-shadow:0 0 0 6px #050505,0 14px 40px rgba(0,0,0,.6)}
+.patch .sew{position:absolute;inset:6px;border:2.5px dashed var(--ink);border-radius:22px;pointer-events:none;
+ -webkit-mask:conic-gradient(from 0deg,#000 var(--sew),transparent 0);mask:conic-gradient(from 0deg,#000 var(--sew),transparent 0)}
+.patch .art{border-radius:16px;overflow:hidden;aspect-ratio:1000/840;background:#000}
+.patch img{width:100%;height:100%;object-fit:cover}
+.patch .arc{display:flex;justify-content:space-between;gap:10px;padding:10px 8px 4px;font:900 clamp(15px,1.6vw,22px)/1 var(--sten);text-transform:uppercase;letter-spacing:.2em}
+.patch figcaption{font-size:12px;color:var(--dim);padding:2px 8px 4px;display:flex;justify-content:space-between}
+.side{display:grid;gap:18px}
+.tag{margin:0;font:900 clamp(46px,5.6vw,86px)/.86 var(--sten);text-transform:uppercase}
+.lede{margin:0;font-size:clamp(17px,1.4vw,20px);max-width:36ch;color:#E2E2DD}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:900 17px/1 var(--sten);text-transform:uppercase;letter-spacing:.14em;padding:13px 18px;border-radius:999px;background:var(--ink);color:var(--bg);border:2px solid var(--ink);transition:transform .2s var(--ease)}
+.btn.o{background:transparent;color:var(--ink);border-style:dashed}
+.btn:hover,.btn:focus-visible{transform:rotate(-3deg) scale(1.05)}
+.pins{display:flex;flex-wrap:wrap;gap:12px;list-style:none;margin:0;padding:0}
+.pins a{display:grid;place-items:center;width:clamp(66px,6.4vw,84px);aspect-ratio:1;border-radius:50%;text-decoration:none;font:900 13px/1 var(--sten);text-transform:uppercase;letter-spacing:.1em;background:var(--ink);color:var(--bg);box-shadow:inset 0 0 0 4px var(--ink),inset 0 0 0 6px var(--bg),0 4px 0 #000;transition:transform .35s var(--ease)}
+.pins li:nth-child(even) a{background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 4px var(--bg),inset 0 0 0 6px var(--ink),0 4px 0 #000}
+.pins a:hover,.pins a:focus-visible{transform:rotate(-14deg) translateY(-4px)}
+/* sections */
+section{padding:clamp(60px,9vw,130px) var(--pad) 0;max-width:1440px;margin:0 auto}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:clamp(22px,3vw,42px);border-bottom:2px dashed rgba(244,244,240,.45);padding-bottom:10px}
+.sh h2{margin:0;font:900 clamp(62px,10.4vw,160px)/.8 var(--sten);text-transform:uppercase;letter-spacing:-.005em}
+.sh span{font:700 12px/1 var(--sans);text-transform:uppercase;letter-spacing:.16em;color:var(--dim)}
+.canvas{position:relative;background:var(--ink);color:#0A0A0A;border-radius:10px;padding:clamp(20px,3vw,44px)}
+.canvas::before{content:"";position:absolute;inset:8px;border:2px dashed #0A0A0A;border-radius:6px;pointer-events:none;opacity:.7}
+.about{display:grid;gap:clamp(22px,3vw,40px)}
+@media (min-width:900px){.about{grid-template-columns:4fr 8fr}}
+.about>*{min-width:0}
+.facts{list-style:none;margin:0;padding:0}
+.facts li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(244,244,240,.35)}
+.facts li span:first-child{font:900 15px/1.3 var(--sten);text-transform:uppercase;letter-spacing:.14em;color:var(--dim)}
+.facts li span:last-child{font-weight:600;text-align:right}
+.bio p{margin:0 0 1em;max-width:62ch;position:relative}
+.bio .first{font:900 clamp(30px,3.4vw,52px)/1 var(--sten);text-transform:uppercase}
+.bio em,.bio mark{font-style:normal;background:#0A0A0A;color:var(--ink);padding:0 .16em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.show{margin:clamp(60px,9vw,130px) auto 0;max-width:1440px;padding:0 var(--pad)}
+.show .frame{border-radius:20px;overflow:hidden;height:min(86svh,980px);border:2px dashed rgba(244,244,240,.5);padding:6px;background:#050505}
+.show img{width:100%;height:100%;object-fit:cover;object-position:50% 8%;border-radius:14px;filter:grayscale(1) contrast(1.25)}
+.show figcaption{display:flex;justify-content:space-between;gap:12px;padding:10px 6px;font-size:13px;color:var(--dim)}
+.statement{padding:clamp(56px,8vw,110px) var(--pad) 0;max-width:1440px;margin:0 auto;text-align:center}
+.statement p{margin:0 auto;max-width:28ch;font:400 clamp(22px,2.6vw,40px)/1.25 var(--sans);text-wrap:balance;color:#E2E2DD}
+.statement b{display:block;margin-top:.3em;font:400 clamp(30px,8.2vw,150px)/.95 var(--wet);color:var(--ink);white-space:nowrap}
+.statement p.pa{max-width:none}
+/* lineup pins */
+.lineup{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2.4vw,34px);perspective:900px}
+@media (min-width:760px){.lineup{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1180px){.lineup{grid-template-columns:repeat(6,1fr)}}
+.button{position:relative;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:14%;background:radial-gradient(circle at 34% 28%,#fff,var(--ink) 55%,#cfcfca);color:#0A0A0A;box-shadow:0 10px 24px rgba(0,0,0,.55),inset 0 -6px 14px rgba(0,0,0,.18);transition:transform .7s var(--ease);transform-style:preserve-3d}
+.lineup li:nth-child(even) .button{background:radial-gradient(circle at 34% 28%,#3a3a3a,#0A0A0A 60%);color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.55),inset 0 0 0 2px rgba(244,244,240,.6)}
+.button b{display:block;font:900 clamp(24px,2.6vw,38px)/.9 var(--sten);text-transform:uppercase}
+.button span{display:block;margin-top:6px;font:700 clamp(10px,.9vw,12px)/1.3 var(--sans);text-transform:uppercase;letter-spacing:.12em}
+.lineup li:hover .button{transform:rotateY(180deg) rotateY(180deg) rotate(-8deg)}
+/* listen */
+.feature{display:grid;gap:clamp(20px,3vw,46px);align-items:center}
+@media (min-width:860px){.feature{grid-template-columns:5fr 7fr}}
+.feature>*{min-width:0}
+.cover{border-radius:16px;overflow:hidden;border:2px dashed rgba(244,244,240,.6);padding:6px;background:#050505}
+.cover img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;filter:grayscale(1) contrast(1.2);transition:filter .5s}
+.cover:hover img{filter:none}
+.lbl{font:700 12px/1 var(--sans);text-transform:uppercase;letter-spacing:.16em;color:var(--dim)}
+.feature h3{margin:8px 0 16px;font:900 clamp(46px,6.2vw,98px)/.86 var(--sten);text-transform:uppercase}
+.feature h3 span{display:block;font:700 .26em/1.3 var(--sans);letter-spacing:.14em;color:var(--dim);margin-top:.4em}
+.player{margin-top:18px}
+.player button{all:unset;cursor:pointer;display:flex;gap:14px;align-items:center;width:100%;box-sizing:border-box;padding:14px 16px;border:2px dashed var(--ink);border-radius:14px;font-weight:600}
+.player button:hover{background:var(--ink);color:var(--bg)}
+.player button:focus-visible{outline:3px dashed var(--ink);outline-offset:4px}
+.player .dot{width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;flex:none}
+.player button:hover .dot{background:var(--bg);color:var(--ink)}
+.plat{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+.plat a{display:inline-block;padding:8px 14px;border-radius:999px;border:2px dashed rgba(244,244,240,.7);text-decoration:none;font-size:14px;font-weight:600}
+.plat a:hover,.plat a:focus-visible{background:var(--ink);color:var(--bg);border-style:solid}
+.disco{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.4vw,30px);margin:clamp(44px,6vw,80px) 0 0;padding:0;list-style:none}
+@media (min-width:700px){.disco{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.disco{grid-template-columns:repeat(6,1fr)}}
+.disco a{display:block;text-decoration:none}
+.disco .c{border-radius:50%;overflow:hidden;border:2px dashed rgba(244,244,240,.6);padding:5px;background:#050505;transition:transform .6s var(--ease)}
+.disco img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;filter:grayscale(1) contrast(1.2);transition:filter .4s}
+.disco a:hover .c,.disco a:focus-visible .c{transform:rotate(-20deg)}
+.disco a:hover img,.disco a:focus-visible img{filter:none}
+.disco b{display:block;text-align:center;font:900 20px/1 var(--sten);text-transform:uppercase;margin-top:10px}
+.disco small{display:block;text-align:center;font-size:12px;color:var(--dim)}
+/* watch */
+.vids{display:grid;gap:clamp(18px,2.4vw,32px)}
+@media (min-width:760px){.vids{grid-template-columns:1fr 1fr}}
+.vid h3{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 10px;font:900 clamp(26px,2.6vw,38px)/1 var(--sten);text-transform:uppercase}
+.vid h3 small{font:700 13px/1 var(--sans);letter-spacing:.14em;color:var(--dim)}
+.yt{border-radius:16px;border:2px dashed rgba(244,244,240,.55)}
+.yt img{border-radius:14px;filter:grayscale(1) contrast(1.2);transition:filter .4s,transform .6s var(--ease)}
+.yt:hover img,.yt:focus-visible img{filter:none;transform:scale(1.03)}
+.yt .pl{position:absolute;left:50%;top:50%;width:80px;height:80px;margin:-40px 0 0 -40px;border-radius:50%;background:var(--ink);display:grid;place-items:center;box-shadow:inset 0 0 0 4px var(--ink),inset 0 0 0 6px #0A0A0A;transition:transform .35s var(--ease)}
+.yt:hover .pl{transform:rotate(-12deg) scale(1.1)}
+iframe.yt{border-radius:16px}
+/* photos */
+.grid button{border-radius:14px;background:#050505;padding:5px;box-shadow:inset 0 0 0 2px rgba(244,244,240,.0)}
+.grid button::after{content:"";position:absolute;inset:4px;border:1.5px dashed rgba(244,244,240,.55);border-radius:11px;pointer-events:none}
+.grid img{border-radius:9px;filter:grayscale(1) contrast(1.2);transition:filter .5s,transform .6s var(--ease)}
+.grid button:hover img,.grid button:focus-visible img{filter:none;transform:scale(1.03)}
+.grid button:focus-visible{outline:3px dashed var(--ink);outline-offset:4px}
+.press-note{margin-top:18px;font-size:14px;color:var(--dim)}
+/* contact */
+.contact{padding:clamp(70px,10vw,150px) var(--pad) 30px;max-width:1440px;margin:0 auto}
+.contact h2{margin:0;font:400 clamp(64px,13vw,210px)/.9 var(--wet)}
+.contact h2 em{display:block;font:900 clamp(18px,2vw,28px)/1.2 var(--sten);font-style:normal;text-transform:uppercase;letter-spacing:.14em;color:var(--dim);margin-top:.4em}
+.contact .note{max-width:52ch;margin:16px 0 0;font-size:clamp(17px,1.4vw,20px)}
+.links{list-style:none;margin:clamp(26px,3vw,44px) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px}
+.links a{display:flex;flex-direction:column;gap:4px;min-width:min(100%,220px);padding:16px 22px;border-radius:10px;background:var(--ink);color:#0A0A0A;text-decoration:none;position:relative;transform:rotate(var(--r,0deg));transition:transform .3s var(--ease)}
+.links a::before{content:"";position:absolute;inset:5px;border:2px dashed #0A0A0A;border-radius:6px;opacity:.65}
+.links li:nth-child(1) a{--r:-2deg}.links li:nth-child(2) a{--r:1.5deg}.links li:nth-child(3) a{--r:-1deg}.links li:nth-child(4) a{--r:2deg}.links li:nth-child(5) a{--r:-1.5deg}
+.links li:nth-child(even) a{background:#0A0A0A;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.links li:nth-child(even) a::before{border-color:var(--ink)}
+.links a b{font:900 clamp(26px,2.8vw,40px)/1 var(--sten);text-transform:uppercase}
+.links a span{font-size:14px;font-weight:600}
+.links a:hover,.links a:focus-visible{transform:rotate(0) scale(1.05)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:clamp(56px,8vw,100px);padding-top:16px;border-top:2px dashed rgba(244,244,240,.45);font-size:13px;color:var(--dim)}
+.foot img{width:80px}
+/* motion */
+@media (prefers-reduced-motion:no-preference){
+ .word{animation:spray 1.3s cubic-bezier(.45,.05,.3,1) .2s both}
+ @keyframes spray{from{--spray:-14%}to{--spray:130%}}
+ .sub{animation:fadein .6s ease 1.2s both}
+ @keyframes fadein{from{opacity:0;filter:blur(6px)}}
+ .patch .sew{animation:sew 1.6s linear .6s both}
+ @keyframes sew{from{--sew:0deg}to{--sew:360deg}}
+ .patch{animation:press .7s var(--ease) .3s both}
+ @keyframes press{from{opacity:0;transform:scale(1.04) rotate(-1.5deg)}}
+ .side>*{animation:rise .7s var(--ease) both;animation-delay:calc(1s + var(--i,0)*.1s)}
+ @keyframes rise{from{opacity:0;transform:translateY(18px)}}
+ .pins li{animation:pinon .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(1.6s + var(--i)*.07s)}
+ @keyframes pinon{from{transform:scale(0) rotate(-60deg)}}
+}
+@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+ .sh h2{animation:sprayin linear both;animation-timeline:view();animation-range:entry 0% cover 35%}
+ @keyframes sprayin{from{filter:blur(10px);opacity:.1;letter-spacing:.08em}}
+ .statement b{animation:spray linear both;animation-timeline:view();animation-range:entry 20% cover 50%;-webkit-mask-image:linear-gradient(100deg,#000 calc(var(--spray) - 14%),transparent var(--spray));mask-image:linear-gradient(100deg,#000 calc(var(--spray) - 14%),transparent var(--spray))}
+ .lineup li{animation:pinin linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+ .lineup li:nth-child(odd){--t:-30deg}.lineup li:nth-child(even){--t:24deg}
+ @keyframes pinin{from{transform:rotate(var(--t)) scale(.6);opacity:0}}
+ .canvas,.links a{animation:sewon linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+ @keyframes sewon{from{transform:rotate(calc(var(--r,0deg) - 4deg)) translateY(40px);opacity:0}}
+ .disco .c{animation:roll linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+ @keyframes roll{from{transform:rotate(-120deg) translateX(-30px);opacity:0}}
+}}
+
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wm" viewBox="0 0 729 140"><path fill="currentColor" fill-rule="evenodd" d="M66 139C67.2 138.3 67.8 137.5 67.5 136.9C67.1 136.4 67.3 136.0 67.9 136.0C69.8 136.0 76.1 129.7 78.3 125.6C80.4 121.8 80.5 120.2 80.5 101.5C80.5 78.4 79.6 74.6 72.9 68.5L69 65L72 62C76.8 56.8 78.4 50.4 78.5 36.0C78.5 17.3 74.1 9.2 61.2 4.4C54.0 1.7 4.7 1.0 1.9 3.6C0.1 5.2 0.0 5.2 0.0 2.7L0 0L223 0C419.5 0.1 444.9 0.3 440.0 1.6C433.1 3.4 427.4 7.3 423.5 12.9L420 17L420 38C419.8 60.5 420.6 64.0 427.2 69.5C434.3 75.5 437.4 76.4 453.1 77.0C463.3 77.3 468.2 77.9 469.3 78.9C470.8 80.1 471.0 82.7 471.0 98.0C471.0 119.7 471.4 119.0 458.4 119.0C446.3 119.0 445.7 118.5 445.2 108.3C444.7 97.8 444.9 98.0 431.5 98.0C416.7 98.0 416.6 98.0 417.1 112.7C417.5 124.2 419.7 130.2 425.2 134.7C431.8 140.0 431.9 140.0 411.6 140.0C400.0 140.0 393.1 139.6 393.5 139.1C394.6 137.2 394.0 4.8 392.9 3.3C392.1 2.4 388.7 2.0 380.5 2.0C364.9 2.0 366.0 -0.0 366.0 29.8L366 54L354 54L341 54L341 30C341.0 -0.1 342.1 2.0 326.3 2.0C316.9 2.0 315.1 2.3 313.7 3.8C311.5 6.2 311.1 136.7 313.2 138.8C314.1 139.7 311.4 140.0 300.7 140.0C287.9 140.0 287.1 139.9 288.0 138.2C289.2 136.1 264.3 6.2 262.1 3.6C260.2 1.4 226.9 1.2 225.1 3.4C223.2 5.7 198.0 137.3 199.2 138.8C200.0 139.7 197.5 140.0 187.1 140.0C177.6 140.0 174.1 139.7 174.6 138.9C175.6 137.1 175.0 119.7 173.8 118.3C173.0 117.3 167.7 117.0 152.4 117.0L132 117L132 61C132.0 8.3 131.9 5.2 130.2 3.7C127.8 1.5 106.9 1.2 105.1 3.3C104.0 4.8 103.4 137.2 104.5 139.1C104.9 139.6 97.4 140.0 84.8 140.0C70.4 139.9 65.0 139.6 66.3 138.9ZM225 139C225.3 138.1 226.5 133.4 227.4 128.5C228.3 123.5 229.3 118.3 229.6 116.8L230 114L242 114L255 114L257 126C258.2 132.2 259.6 138.0 260.2 138.7C261.0 139.7 257.5 140.0 242.5 140.0C227.6 140.0 224.0 139.7 224.8 138.8ZM340 139C340.7 137.9 341.0 129.5 341.0 107.3L341 77L354 77L366 77L366 107C366.0 129.5 366.3 137.9 367.2 138.8C368.1 139.7 365.1 140.0 353.5 140.0C341.9 140.0 338.9 139.7 339.8 138.8ZM488 138C488.9 137.3 490.7 135.5 492.2 134.3C498.8 128.5 499.5 125.1 499.5 97.0C499.5 68.5 499.3 67.4 491.8 60.3C485.6 54.3 480.1 52.6 464.5 52.0C456.8 51.7 449.9 51.1 449.2 50.7C448.4 50.1 448.0 46.4 448.0 38.0C448.0 24.0 448.0 24.0 458.8 24.0C466.8 24.0 469.0 25.5 469.0 31.2C469.0 36.6 470.3 37.1 484.1 36.8L496 36L497 29C497.4 14.3 490.9 5.4 476.9 1.6C472.1 0.3 485.6 0.1 600.2 0.1L729 0L729 3C729.0 5.2 728.9 5.2 727.2 3.7C724.7 1.4 692.9 1.2 691.1 3.4C690.5 4.1 687.1 19.5 683.5 37.5C680.0 55.5 677.0 70.4 676.8 70.6C676.6 70.7 673.4 56.2 669.6 38.2C665.6 19.1 662.1 4.8 661.2 3.8C658.9 1.0 627.1 1.1 624.7 3.8C622.5 6.2 622.1 136.7 624.2 138.8C625.1 139.7 621.1 140.0 606.2 140.0L587 140L592 135C600.5 125.7 600.0 130.2 600.0 63.8C600.0 8.4 599.9 5.2 598.2 3.7C595.4 1.1 576.0 1.2 573.7 3.8C572.2 5.5 572.0 10.9 572.0 60.8L572 116L570 117C568.3 118.5 565.3 119.0 560.9 119.0C550.2 119.0 551.0 124.0 551.0 60.3C551.0 8.3 550.9 5.2 549.2 3.7C546.3 1.1 526.0 1.2 523.6 3.9C522.1 5.6 521.9 10.4 522.2 64.1C522.5 128.9 522.2 125.7 529.3 133.1C536.5 140.6 538.1 140.0 511.0 140.0C488.2 140.0 486.8 139.9 488.1 138.3ZM648 139C648.8 138.5 649.1 125.1 649.0 109.3C649.0 93.5 649.1 80.8 649.4 81.1C649.8 81.5 660.6 131.0 661.3 135.5C661.4 136.6 661.9 138.1 662.3 138.8C662.9 139.7 661.3 140.0 655.5 140.0C650.7 140.0 648.1 139.6 648.5 139.0ZM688 138C688.5 137.3 691.5 124.4 694.5 109.5C697.6 94.7 700.3 82.4 700.6 82.1C700.8 81.8 701.0 94.3 701.0 109.8C700.9 125.3 701.2 138.4 701.5 139.0C701.9 139.6 699.3 140.0 694.6 140.0C687.6 140.0 687.1 139.9 688.0 138.2ZM29 97L29 77L38 77C52.5 77.0 52.0 76.3 52.0 97.5C52.0 118.2 52.8 117.0 38.6 117.0L29 117L29 97ZM235 90C235.0 88.1 242.4 51.6 242.6 52.5C243.0 53.6 250.0 89.8 250.0 90.6C250.0 90.8 246.6 91.0 242.5 91.0C238.4 91.0 235.0 90.7 235.0 90.2ZM29 40L29 26L38 26C44.2 26.0 48.0 26.4 48.8 27.2C49.6 28.0 50.0 32.2 50.0 39.5C50.0 53.7 49.8 54.0 37.7 54.0L29 54L29 40Z"/></symbol></svg>
-<a class="skip" href="#info">Skip to info</a>
-
-<div id="app">
-  <img class="poster" alt="Blahsum playing outside in front of a brick building with arched windows reading “Blahsum and Boojum”, “Coffee” and “Ice Cream”. Photo by Avram Wolf.">
-  <noscript><img class="poster" src="epk-assets/shared/stage45/scene/scene-full-960.webp" srcset="epk-assets/shared/stage45/scene/scene-full-960.webp 960w, epk-assets/shared/stage45/scene/scene-full-1600.webp 1600w" sizes="100vw" alt="Blahsum playing outside in front of a brick building. Photo by Avram Wolf."></noscript>
-  <canvas id="gl" aria-hidden="true"></canvas>
-  <div id="spots" role="group" aria-label="Stage hotspots"></div>
-  <header class="hud hud-top">
-    <a class="brand" href="#info" data-open="bio"><svg viewBox="0 0 729 140" aria-hidden="true" focusable="false"><use href="#wm"/></svg><span>Post-Americana Live</span><span class="sr-only">Blahsum — bio</span></a>
-    <button class="btn hot" type="button" id="skipInfo" aria-controls="info">Skip to info <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  </header>
-  <div class="hud loader" aria-hidden="true"><p>Setting up the stage</p><i></i></div>
-  <p class="hud hint" id="hint" aria-hidden="true">Drag to look around · scroll to step in · tap the lights</p>
-  <p class="hud credit">Photo · Avram Wolf</p>
-  <nav class="hud dock" aria-label="Press kit sections"><ul>
-    <li><button type="button" data-open="bio">Bio</button></li>
-    <li><button type="button" data-open="listen">Listen</button></li>
-    <li><button type="button" data-open="watch">Watch</button></li>
-    <li><button type="button" data-open="photos">Photos</button></li>
-    <li><button type="button" data-open="booking">Booking</button></li>
-  </ul></nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+ <a class="id" href="#top" aria-label="Blahsum, back to top">BLAHSUM</a>
+ <nav aria-label="Sections"><ul><li><a href="#about">About</a></li><li><a href="#listen">Listen</a></li><li><a href="#watch">Watch</a></li><li><a href="#photos">Photos</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+</header>
+<main id="main" tabindex="-1">
+<div class="hero" id="top">
+ <h1 class="word spray">BLAHSUM<span class="vh"> — electronic press kit</span></h1>
+ <div class="sub"><span>Psychedelic rap jam band</span><span>Brooklyn, NY</span></div>
+ <div class="hgrid">
+  <figure class="patch"><span class="sew" aria-hidden="true"></span>
+   <div class="arc" aria-hidden="true"><span>Blahsum</span><span>Brooklyn NY</span></div>
+   <div class="art"><picture><source media="(max-width:700px)" srcset="epk-assets/r2/img/alley-stencil-640.png"><img src="epk-assets/r2/img/alley-stencil-1000.png" width="1000" height="840" alt="The six members of Blahsum standing together in a graffiti-covered alley at night, looking up at the camera, as a black, grey and white spray stencil" fetchpriority="high" decoding="async"></picture></div>
+   <figcaption><span>Fig. 1 — Blahsum</span><span>Brooklyn, NY</span></figcaption>
+  </figure>
+  <div class="side">
+   <p class="tag spray" style="--i:0">Post&#8209;Americana live</p>
+   <p class="lede" style="--i:1">Rock, jam, punk and rap, stretched further and further out. No two shows are the same.</p>
+   <div class="ctas" style="--i:2"><a class="btn" href="#watch">▶ Watch it now</a><a class="btn o" href="#listen">Listen</a><a class="btn o" href="#contact">Booking</a></div>
+   <ul class="pins" aria-label="Jump to" style="--i:3"><li style="--i:0"><a href="#about">About</a></li><li style="--i:1"><a href="#listen">Listen</a></li><li style="--i:2"><a href="#watch">Watch</a></li><li style="--i:3"><a href="#photos">Photos</a></li><li style="--i:4"><a href="#contact">Contact</a></li></ul>
+  </div>
+ </div>
 </div>
 
-<aside class="info" id="info" aria-label="Blahsum press kit" tabindex="-1">
-  <div class="info-head">
-    <button class="btn" type="button" data-close>← Back to the stage</button>
-    <button class="btn" type="button" data-all>See everything</button>
-  </div>
-  <section class="member-card" id="info-member" aria-live="polite">
-    <p class="kicker">On stage</p>
-    <h2 id="m-name"></h2>
-    <p class="lede" id="m-role"></p>
-    <p class="muted" id="m-note"></p>
-    <button class="btn hot" type="button" data-open="bio">Read the full bio</button>
-  </section>
-  <section id="info-bio" aria-labelledby="h-bio">
-    <p class="kicker">the story</p>
-    <h2 id="h-bio">Bio</h2>
-    <p class="lede">Blahsum is a psychedelic rap jam band based out of Brooklyn, NY — together they alchemize a new sound: <em>Post-Americana</em>.</p>
-    <div class="cols">
-      <p>In the early days it was just frontman Garbo, writing lyrics and cutting together beats in his Chinatown home studio. He began to develop a following from a series of releases called the Moon Tapes — new collections of songs that debuted every full moon.</p>
-      <div>
-      <p>Over the years the live band has taken on a life of its own, stretching the songs further and further out with freewheeling arrangements and a no-two-shows-are-the-same ethos of exploration and improvisation. The group has expanded to include Garbo’s brother Zach M on the drums, Zach Schepis on lead guitar &amp; harmonica, Nate McManus on rhythm guitar &amp; trumpet, Alex Torke on the bass, and Dan Erbland on the saxophone.</p>
-      <p>Blahsum continues to showcase their unique blend of rock, jam, punk, and rap at venues along the east coast. Drawing upon American musical and cultural myths through a distorted lens, together they alchemize a new sound: <span class="pa">Post-Americana</span></p>
-      </div>
-    </div>
-    <ul class="lineup" aria-label="Lineup">
-      <li data-m="garbo"><b>Garbo</b><span>Frontman · lyrics &amp; beats</span></li>
-      <li data-m="zachm"><b>Zach M</b><span>Drums</span></li>
-      <li data-m="schepis"><b>Zach Schepis</b><span>Lead guitar &amp; harmonica</span></li>
-      <li data-m="nate"><b>Nate McManus</b><span>Rhythm guitar &amp; trumpet</span></li>
-      <li data-m="alex"><b>Alex Torke</b><span>Bass</span></li>
-      <li data-m="dan"><b>Dan Erbland</b><span>Saxophone</span></li>
-    </ul>
-    <ul class="chips" aria-label="Social media">
-      <li><a href="https://www.instagram.com/blahsum/" target="_blank" rel="noopener">Instagram</a></li>
-      <li><a href="https://www.facebook.com/blahsumx/" target="_blank" rel="noopener">Facebook</a></li>
-      <li><a href="https://www.youtube.com/@BlahSumX" target="_blank" rel="noopener">YouTube</a></li>
-      <li><a href="https://twitter.com/BLAHSUM" target="_blank" rel="noopener">Twitter / X</a></li>
-    </ul>
-  </section>
-  <section id="info-listen" aria-labelledby="h-listen">
-    <p class="kicker">Listen</p>
-    <div class="album">
-      <div class="cover" id="cover">
-        <img src="epk-assets/shared/stage45/photos/rockaway-720.webp" srcset="epk-assets/shared/stage45/photos/rockaway-360.webp 360w, epk-assets/shared/stage45/photos/rockaway-720.webp 720w" sizes="(min-width:700px) 400px, 90vw" alt="Live at Rockaway Beach album art" loading="lazy" decoding="async" width="720" height="720">
-        <button class="btn hot" type="button" id="spPlay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>Play here</button>
-      </div>
-      <div>
-        <h2 id="h-listen">Live at Rockaway Beach</h2>
-        <a class="btn hot" href="https://open.spotify.com/album/2tPVzNhSrSD9UI7L6cBmHL" target="_blank" rel="noopener">Stream the album ↗</a>
-        <ul class="chips" aria-label="Listen on">
-          <li><a href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt" target="_blank" rel="noopener">Spotify ↗</a></li>
-          <li><a href="https://music.apple.com/us/artist/blahsum/945248239" target="_blank" rel="noopener">Apple Music ↗</a></li>
-          <li><a href="https://music.youtube.com/channel/UCBS0frV3vTZVUphamRgtBUw" target="_blank" rel="noopener">YouTube Music ↗</a></li>
-          <li><a href="https://music.amazon.com/artists/B00R784AQ8/blahsum" target="_blank" rel="noopener">Amazon Music ↗</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <section id="info-watch" aria-labelledby="h-watch">
-    <p class="kicker">Watch</p>
-    <h2 id="h-watch">Videos</h2>
-    <div class="vids">
-      <figure class="vid"><div class="frame"><button type="button" data-yt="bQXSdhBLWg8" aria-label="Play Uncle Gabe's Band"><img data-src="https://i.ytimg.com/vi/bQXSdhBLWg8/hqdefault.jpg" alt="" decoding="async"></button></div><figcaption>Uncle Gabe's Band</figcaption></figure>
-      <figure class="vid"><div class="frame"><button type="button" data-yt="-ZTp4umFVtc" aria-label="Play Way Too Long"><img data-src="https://i.ytimg.com/vi/-ZTp4umFVtc/hqdefault.jpg" alt="" decoding="async"></button></div><figcaption>Way Too Long</figcaption></figure>
-      <figure class="vid"><div class="frame"><button type="button" data-yt="4PDDvqUrdH0" aria-label="Play West LA Fade Away"><img data-src="https://i.ytimg.com/vi/4PDDvqUrdH0/hqdefault.jpg" alt="" decoding="async"></button></div><figcaption>West LA Fade Away</figcaption></figure>
-      <figure class="vid"><div class="frame"><button type="button" data-yt="7TtFuV5DTn0" aria-label="Play Blahsum Is"><img data-src="https://i.ytimg.com/vi/7TtFuV5DTn0/hqdefault.jpg" alt="" decoding="async"></button></div><figcaption>Blahsum Is</figcaption></figure>
-    </div>
-  </section>
-  <section id="info-photos" aria-labelledby="h-photos">
-    <p class="kicker">Photos</p>
-    <h2 id="h-photos">Press photos</h2>
-    <div class="photos" id="gallery"><button type="button" class="tall" data-large="epk-assets/shared/stage45/photos/hero-img-960.webp" data-full="pictures/gallery/hero-img.jpeg" aria-label="Open photo 1 of 9"><img src="epk-assets/shared/stage45/photos/hero-img-480.webp" srcset="epk-assets/shared/stage45/photos/hero-img-480.webp 480w, epk-assets/shared/stage45/photos/hero-img-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 1" loading="lazy" decoding="async"></button><button type="button" class="" data-large="epk-assets/shared/stage45/photos/blahsumfestphoto2-1600.webp" data-full="pictures/gallery/BlahsumFestPhoto2.jpeg" aria-label="Open photo 2 of 9"><img src="epk-assets/shared/stage45/photos/blahsumfestphoto2-480.webp" srcset="epk-assets/shared/stage45/photos/blahsumfestphoto2-480.webp 480w, epk-assets/shared/stage45/photos/blahsumfestphoto2-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 2" loading="lazy" decoding="async"></button><button type="button" class="tall" data-large="epk-assets/shared/stage45/photos/blahsumfestphoto3-960.webp" data-full="pictures/gallery/BlahsumFestPhoto3.jpeg" aria-label="Open photo 3 of 9"><img src="epk-assets/shared/stage45/photos/blahsumfestphoto3-480.webp" srcset="epk-assets/shared/stage45/photos/blahsumfestphoto3-480.webp 480w, epk-assets/shared/stage45/photos/blahsumfestphoto3-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 3" loading="lazy" decoding="async"></button><button type="button" class="wide" data-large="epk-assets/shared/stage45/photos/blahsumwonderville-22-1600.webp" data-full="pictures/gallery/BlahsumWonderville-22.jpg" aria-label="Open photo 4 of 9"><img src="epk-assets/shared/stage45/photos/blahsumwonderville-22-480.webp" srcset="epk-assets/shared/stage45/photos/blahsumwonderville-22-480.webp 480w, epk-assets/shared/stage45/photos/blahsumwonderville-22-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 4" loading="lazy" decoding="async"></button><button type="button" class="" data-large="epk-assets/shared/stage45/photos/blahsumfestphoto1-960.webp" data-full="pictures/gallery/BlahsumFestPhoto1.jpeg" aria-label="Open photo 5 of 9"><img src="epk-assets/shared/stage45/photos/blahsumfestphoto1-480.webp" srcset="epk-assets/shared/stage45/photos/blahsumfestphoto1-480.webp 480w, epk-assets/shared/stage45/photos/blahsumfestphoto1-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 5" loading="lazy" decoding="async"></button><button type="button" class="" data-large="epk-assets/shared/stage45/photos/blahsumsultan04-1600.webp" data-full="pictures/gallery/BlahsumSultan04.jpg" aria-label="Open photo 6 of 9"><img src="epk-assets/shared/stage45/photos/blahsumsultan04-480.webp" srcset="epk-assets/shared/stage45/photos/blahsumsultan04-480.webp 480w, epk-assets/shared/stage45/photos/blahsumsultan04-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 6" loading="lazy" decoding="async"></button><button type="button" class="" data-large="epk-assets/shared/stage45/photos/blahsumsultan02-1600.webp" data-full="pictures/gallery/BlahsumSultan02.jpg" aria-label="Open photo 7 of 9"><img src="epk-assets/shared/stage45/photos/blahsumsultan02-480.webp" srcset="epk-assets/shared/stage45/photos/blahsumsultan02-480.webp 480w, epk-assets/shared/stage45/photos/blahsumsultan02-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 7" loading="lazy" decoding="async"></button><button type="button" class="wide" data-large="epk-assets/shared/stage45/photos/blahsumfinals-20-1600.webp" data-full="pictures/gallery/BlahsumFinals-20.jpg" aria-label="Open photo 8 of 9"><img src="epk-assets/shared/stage45/photos/blahsumfinals-20-480.webp" srcset="epk-assets/shared/stage45/photos/blahsumfinals-20-480.webp 480w, epk-assets/shared/stage45/photos/blahsumfinals-20-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 8" loading="lazy" decoding="async"></button><button type="button" class="" data-large="epk-assets/shared/stage45/photos/blahsumteafactory01-1600.webp" data-full="pictures/gallery/BlahsumTeaFactory01.jpg" aria-label="Open photo 9 of 9"><img src="epk-assets/shared/stage45/photos/blahsumteafactory01-480.webp" srcset="epk-assets/shared/stage45/photos/blahsumteafactory01-480.webp 480w, epk-assets/shared/stage45/photos/blahsumteafactory01-960.webp 960w" sizes="(min-width:860px) 25vw, 50vw" alt="Blahsum live, press photo 9" loading="lazy" decoding="async"></button></div>
-    <p class="muted">Tap a photo for full size. Stage photo by Avram Wolf. Logo: <a href="pictures/misc/blahsum_logoblack.PNG" download>download PNG</a>.</p>
-  </section>
-  <section id="info-booking" aria-labelledby="h-booking">
-    <p class="kicker">Booking</p>
-    <h2 id="h-booking">Booking &amp; contact</h2>
-    <!-- TODO(Zach): add a booking email / agent here — the current EPK doesn't list one, so none is shown. -->
-    <p class="muted">Reach Blahsum on these channels.</p>
-    <div class="rows">
-      <a href="https://www.instagram.com/blahsum/" target="_blank" rel="noopener"><b>Instagram ↗</b><span>@blahsum</span></a>
-      <a href="https://www.facebook.com/blahsumx/" target="_blank" rel="noopener"><b>Facebook ↗</b><span>facebook.com/blahsumx</span></a>
-      <a href="https://www.youtube.com/@BlahSumX" target="_blank" rel="noopener"><b>YouTube ↗</b><span>@BlahSumX</span></a>
-      <a href="https://twitter.com/BLAHSUM" target="_blank" rel="noopener"><b>Twitter / X ↗</b><span>@BLAHSUM</span></a>
-      <a href="https://www.bandsintown.com/a/10653133" target="_blank" rel="noopener"><b>Shows ↗</b><span>Tour dates on Bandsintown</span></a>
-    </div>
-  </section>
-  <footer>© Blahsum · Post-Americana Live · Stage photo by Avram Wolf</footer>
-</aside>
+<section id="about" aria-labelledby="about-h">
+ <div class="sh"><h2 id="about-h" class="spray">About</h2><span>Bio</span></div>
+ <div class="about"><ul class="facts"><li><span>Based in</span><span>Brooklyn, NY</span></li>
+<li><span>Sound</span><span>Rock · Jam · Punk · Rap</span></li>
+<li><span>Live</span><span>East coast venues</span></li>
+<li><span>Members</span><span>Six</span></li>
+<li><span>Live record</span><span>Live at Rockaway Beach</span></li></ul><div class="canvas bio"><p class="first">Blahsum is a <em>psychedelic rap jam band</em> based out of Brooklyn, NY.</p><p>In the early days it was just frontman Garbo, writing lyrics and cutting together beats in his Chinatown home studio. He began to develop a following from a series of releases called the <mark>Moon Tapes</mark> — new collections of songs that debuted every full moon.</p><p>Over the years the live band has taken on a life of its own, stretching the songs further and further out with freewheeling arrangements and a <mark>no-two-shows-are-the-same</mark> ethos of exploration and improvisation. The group has expanded to include Garbo’s brother Zach M on the drums, Zach Schepis on lead guitar &amp; harmonica, Nate McManus on rhythm guitar &amp; trumpet, Alex Torke on the bass, and Dan Erbland on the saxophone.</p><p>Blahsum continues to showcase their unique blend of rock, jam, punk, and rap at venues along the east coast.</p></div></div>
+</section>
 
-<dialog class="lb" id="lb" aria-label="Photo viewer">
-  <button class="btn x" type="button" data-close>Close ✕</button>
-  <figure><img alt=""></figure>
-  <div class="bar"><button class="btn" type="button" data-step="-1">← Prev</button><a class="btn" data-full target="_blank" rel="noopener">Full size ↗</a><button class="btn" type="button" data-step="1">Next →</button></div>
+<figure class="show"><div class="frame"><picture><source type="image/avif" srcset="epk-assets/shared/img/show-coffee-icecream-640.avif 640w, epk-assets/shared/img/show-coffee-icecream-1080.avif 1080w, epk-assets/shared/img/show-coffee-icecream-1600.avif 1600w, epk-assets/shared/img/show-coffee-icecream-2400.avif 2400w" sizes="100vw"><img src="epk-assets/shared/img/show-coffee-icecream-1080.webp" srcset="epk-assets/shared/img/show-coffee-icecream-640.webp 640w, epk-assets/shared/img/show-coffee-icecream-1080.webp 1080w, epk-assets/shared/img/show-coffee-icecream-1600.webp 1600w, epk-assets/shared/img/show-coffee-icecream-2400.webp 2400w" sizes="100vw" width="2400" height="2400" alt="Black-and-white live photo: Blahsum playing outdoors in front of a brick building with arched windows reading “Blahsum and Boojum”, “Coffee” and “Ice Cream”; the singer leans into the mic mid-verse" loading="lazy" decoding="async"></picture></div><figcaption><span>Live, outdoors under the “Blahsum and Boojum” window</span><span>Photo: Avram Wolf</span></figcaption></figure>
+
+<div class="statement"><p>Drawing upon American musical and cultural myths through a distorted lens, together they alchemize a new sound:</p><p class="pa"><b class="spray">POST-AMERICANA</b></p></div>
+
+<section aria-labelledby="lineup-h">
+ <div class="sh"><h2 id="lineup-h" class="spray">Lineup</h2><span>Six piece</span></div>
+ <ul class="lineup"><li><div class="button"><div><b>Garbo</b><span>frontman — lyrics &amp; beats</span></div></div></li><li><div class="button"><div><b>Zach M</b><span>drums</span></div></div></li><li><div class="button"><div><b>Zach Schepis</b><span>lead guitar &amp; harmonica</span></div></div></li><li><div class="button"><div><b>Nate McManus</b><span>rhythm guitar &amp; trumpet</span></div></div></li><li><div class="button"><div><b>Alex Torke</b><span>bass</span></div></div></li><li><div class="button"><div><b>Dan Erbland</b><span>saxophone</span></div></div></li></ul>
+</section>
+
+<section id="listen" aria-labelledby="listen-h">
+ <div class="sh"><h2 id="listen-h" class="spray">Listen</h2><span>Music</span></div>
+ <div class="feature">
+  <div class="cover"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-live-at-rockaway-320.avif 320w, epk-assets/shared/img/cover-live-at-rockaway-640.avif 640w" sizes="(min-width:860px) 38vw, 100vw"><img src="epk-assets/shared/img/cover-live-at-rockaway-640.webp" srcset="epk-assets/shared/img/cover-live-at-rockaway-320.webp 320w, epk-assets/shared/img/cover-live-at-rockaway-640.webp 640w" sizes="(min-width:860px) 38vw, 100vw" width="640" height="640" alt="Live at Rockaway Beach cover art: Blahsum Summer Jam, a cartoon shark in sunglasses" loading="lazy" decoding="async"></picture></div>
+  <div><span class="lbl">Featured live record</span><h3>Live at Rockaway Beach<span>Blahsum Summer Jam</span></h3>
+   <a class="btn" href="https://open.spotify.com/album/2tPVzNhSrSD9UI7L6cBmHL?si=ZHlclCVFRJKKAIIaT7Bg-w">Stream</a>
+   <div class="player"><button type="button" data-spotify="album/2tPVzNhSrSD9UI7L6cBmHL" data-title="Live at Rockaway Beach on Spotify"><span class="dot" aria-hidden="true">▶</span>Play it right here (loads Spotify player)</button></div>
+   <ul class="plat" aria-label="Streaming platforms"><li><a href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt">Spotify</a></li>
+        <li><a href="https://music.apple.com/us/artist/blahsum/945248239">Apple Music</a></li>
+        <li><a href="https://music.youtube.com/channel/UCBS0frV3vTZVUphamRgtBUw">YouTube Music</a></li>
+        <li><a href="https://music.amazon.com/artists/B00R784AQ8/blahsum">Amazon Music</a></li>
+        <li><a href="https://soundcloud.com/blahsumx">SoundCloud</a></li></ul></div>
+ </div>
+ <h3 class="vh">More releases</h3>
+ <ul class="disco"><li><a href="https://open.spotify.com/album/1vAqEorwgbSs23o474bNRz"><div class="c"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-post-americana-i-320.avif 320w, epk-assets/shared/img/cover-post-americana-i-640.avif 640w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw"><img src="epk-assets/shared/img/cover-post-americana-i-640.webp" srcset="epk-assets/shared/img/cover-post-americana-i-320.webp 320w, epk-assets/shared/img/cover-post-americana-i-640.webp 640w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw" width="640" height="640" alt="Post Americana I cover art" loading="lazy" decoding="async"></picture></div><b>Post Americana I</b><small>Spotify ↗</small></a></li>
+<li><a href="https://open.spotify.com/album/6sYIslpiLou3e4Qtt9bMFq"><div class="c"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-mother-of-all-320.avif 320w, epk-assets/shared/img/cover-mother-of-all-640.avif 640w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw"><img src="epk-assets/shared/img/cover-mother-of-all-640.webp" srcset="epk-assets/shared/img/cover-mother-of-all-320.webp 320w, epk-assets/shared/img/cover-mother-of-all-640.webp 640w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw" width="640" height="640" alt="Mother Of All cover art" loading="lazy" decoding="async"></picture></div><b>Mother Of All</b><small>Spotify ↗</small></a></li>
+<li><a href="https://open.spotify.com/album/3EoNhztZ2iFyk0OOickNTt"><div class="c"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-ring-on-your-bell-320.avif 320w, epk-assets/shared/img/cover-ring-on-your-bell-640.avif 640w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw"><img src="epk-assets/shared/img/cover-ring-on-your-bell-640.webp" srcset="epk-assets/shared/img/cover-ring-on-your-bell-320.webp 320w, epk-assets/shared/img/cover-ring-on-your-bell-640.webp 640w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw" width="640" height="640" alt="Ring On Your Bell cover art" loading="lazy" decoding="async"></picture></div><b>Ring On Your Bell</b><small>Spotify ↗</small></a></li>
+<li><a href="https://open.spotify.com/track/0sxFIsgWFKxudaFd5MnWtt"><div class="c"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-please-dont-dance-320.avif 320w, epk-assets/shared/img/cover-please-dont-dance-640.avif 640w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw"><img src="epk-assets/shared/img/cover-please-dont-dance-640.webp" srcset="epk-assets/shared/img/cover-please-dont-dance-320.webp 320w, epk-assets/shared/img/cover-please-dont-dance-640.webp 640w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw" width="640" height="640" alt="Please Don&#39;t Dance cover art" loading="lazy" decoding="async"></picture></div><b>Please Don’t Dance</b><small>Spotify ↗</small></a></li>
+<li><a href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt"><div class="c"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-alive-in-america-320.avif 320w, epk-assets/shared/img/cover-alive-in-america-500.avif 500w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw"><img src="epk-assets/shared/img/cover-alive-in-america-500.webp" srcset="epk-assets/shared/img/cover-alive-in-america-320.webp 320w, epk-assets/shared/img/cover-alive-in-america-500.webp 500w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw" width="500" height="500" alt="Alive In America cover art" loading="lazy" decoding="async"></picture></div><b>Alive In America</b><small>Spotify ↗</small></a></li>
+<li><a href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt"><div class="c"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-magical-misery-tour-320.avif 320w, epk-assets/shared/img/cover-magical-misery-tour-500.avif 500w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw"><img src="epk-assets/shared/img/cover-magical-misery-tour-500.webp" srcset="epk-assets/shared/img/cover-magical-misery-tour-320.webp 320w, epk-assets/shared/img/cover-magical-misery-tour-500.webp 500w" sizes="(min-width:1100px) 15vw, (min-width:700px) 30vw, 46vw" width="500" height="500" alt="Magical Misery Tour cover art" loading="lazy" decoding="async"></picture></div><b>Magical Misery Tour</b><small>Spotify ↗</small></a></li></ul>
+</section>
+
+<section id="watch" aria-labelledby="watch-h">
+ <div class="sh"><h2 id="watch-h" class="spray">Watch</h2><span>Videos</span></div>
+ <div class="vids"><div class="vid"><h3>Uncle Gabe’s Band <small>01</small></h3><button class="yt" type="button" data-yt="bQXSdhBLWg8" data-title="Uncle Gabe's Band"><img src="https://i.ytimg.com/vi/bQXSdhBLWg8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class=pl aria-hidden=true><svg viewBox="0 0 16 16" width=22 height=22><path d="M4 2l10 6-10 6z" fill="#0A0A0A"/></svg></span><span class="vh">Play video: Uncle Gabe’s Band</span></button></div>
+<div class="vid"><h3>Way Too Long <small>02</small></h3><button class="yt" type="button" data-yt="-ZTp4umFVtc" data-title="Way Too Long"><img src="https://i.ytimg.com/vi/-ZTp4umFVtc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class=pl aria-hidden=true><svg viewBox="0 0 16 16" width=22 height=22><path d="M4 2l10 6-10 6z" fill="#0A0A0A"/></svg></span><span class="vh">Play video: Way Too Long</span></button></div>
+<div class="vid"><h3>West LA Fade Away <small>03</small></h3><button class="yt" type="button" data-yt="4PDDvqUrdH0" data-title="West LA Fade Away"><img src="https://i.ytimg.com/vi/4PDDvqUrdH0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class=pl aria-hidden=true><svg viewBox="0 0 16 16" width=22 height=22><path d="M4 2l10 6-10 6z" fill="#0A0A0A"/></svg></span><span class="vh">Play video: West LA Fade Away</span></button></div>
+<div class="vid"><h3>Blahsum Is <small>04</small></h3><button class="yt" type="button" data-yt="7TtFuV5DTn0" data-title="Blahsum Is"><img src="https://i.ytimg.com/vi/7TtFuV5DTn0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class=pl aria-hidden=true><svg viewBox="0 0 16 16" width=22 height=22><path d="M4 2l10 6-10 6z" fill="#0A0A0A"/></svg></span><span class="vh">Play video: Blahsum Is</span></button></div></div>
+ <p style="margin-top:22px"><a class="btn o" href="https://www.youtube.com/@BlahSumX">More on YouTube ↗</a></p>
+</section>
+
+<section id="photos" aria-labelledby="photos-h">
+ <div class="sh"><h2 id="photos-h" class="spray">Photos</h2><span>Tap to enlarge · press-ready</span></div>
+ <div class="grid"><button type="button" class="p1 w3 h2 wide" data-full="epk-assets/shared/img/teafactory-01-1600.webp" data-orig="pictures/gallery/BlahsumTeaFactory01.jpg" data-cap="Crowd dancing as the band plays, from above"><picture><source type="image/avif" srcset="epk-assets/shared/img/teafactory-01-480.avif 480w, epk-assets/shared/img/teafactory-01-960.avif 960w, epk-assets/shared/img/teafactory-01-1600.avif 1600w" sizes="(min-width:900px) 48vw, 100vw"><img src="epk-assets/shared/img/teafactory-01-960.webp" srcset="epk-assets/shared/img/teafactory-01-480.webp 480w, epk-assets/shared/img/teafactory-01-960.webp 960w, epk-assets/shared/img/teafactory-01-1600.webp 1600w" sizes="(min-width:900px) 48vw, 100vw" width="1600" height="1067" alt="A packed room dancing in front of the band, seen from above" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p2 w2 h3 tall" data-full="epk-assets/shared/img/fest-3-800.webp" data-orig="pictures/gallery/BlahsumFestPhoto3.jpeg" data-cap="Guitarist in sunglasses under blue stage light"><picture><source type="image/avif" srcset="epk-assets/shared/img/fest-3-480.avif 480w, epk-assets/shared/img/fest-3-800.avif 800w" sizes="(min-width:900px) 32vw, 50vw"><img src="epk-assets/shared/img/fest-3-800.webp" srcset="epk-assets/shared/img/fest-3-480.webp 480w, epk-assets/shared/img/fest-3-800.webp 800w" sizes="(min-width:900px) 32vw, 50vw" width="800" height="1200" alt="Guitarist in sunglasses under blue stage light" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p3 w1 h1" data-full="epk-assets/shared/img/sultan-02-960.webp" data-orig="pictures/gallery/BlahsumSultan02.jpg" data-cap="Singer and guitarist under magenta light"><picture><source type="image/avif" srcset="epk-assets/shared/img/sultan-02-480.avif 480w, epk-assets/shared/img/sultan-02-960.avif 960w" sizes="(min-width:900px) 16vw, 50vw"><img src="epk-assets/shared/img/sultan-02-960.webp" srcset="epk-assets/shared/img/sultan-02-480.webp 480w, epk-assets/shared/img/sultan-02-960.webp 960w" sizes="(min-width:900px) 16vw, 50vw" width="960" height="640" alt="Singer and guitarist under magenta light" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p4 w1 h1" data-full="epk-assets/shared/img/fest-1-960.webp" data-orig="pictures/gallery/BlahsumFestPhoto1.jpeg" data-cap="Guitarist in a hat under stage lights, black and white"><picture><source type="image/avif" srcset="epk-assets/shared/img/fest-1-480.avif 480w, epk-assets/shared/img/fest-1-960.avif 960w" sizes="(min-width:900px) 16vw, 50vw"><img src="epk-assets/shared/img/fest-1-960.webp" srcset="epk-assets/shared/img/fest-1-480.webp 480w, epk-assets/shared/img/fest-1-960.webp 960w" sizes="(min-width:900px) 16vw, 50vw" width="960" height="839" alt="Black-and-white photo of a guitarist in a hat and sunglasses under stage lights" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p5 w3 h2 wide" data-full="epk-assets/shared/img/finals-23-1600.webp" data-orig="pictures/gallery/BlahsumFinals-23.jpg" data-cap="Long-exposure light trails over the band and crowd"><picture><source type="image/avif" srcset="epk-assets/shared/img/finals-23-480.avif 480w, epk-assets/shared/img/finals-23-960.avif 960w, epk-assets/shared/img/finals-23-1600.avif 1600w" sizes="(min-width:900px) 48vw, 100vw"><img src="epk-assets/shared/img/finals-23-960.webp" srcset="epk-assets/shared/img/finals-23-480.webp 480w, epk-assets/shared/img/finals-23-960.webp 960w, epk-assets/shared/img/finals-23-1600.webp 1600w" sizes="(min-width:900px) 48vw, 100vw" width="1600" height="1066" alt="Long-exposure light trails swirling over the band and crowd in a cluttered bar" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p6 w2 h2" data-full="epk-assets/shared/img/sultan-01-1600.webp" data-orig="pictures/gallery/BlahsumSultan01.jpg" data-cap="Guitarist in front of psychedelic projections"><picture><source type="image/avif" srcset="epk-assets/shared/img/sultan-01-480.avif 480w, epk-assets/shared/img/sultan-01-960.avif 960w, epk-assets/shared/img/sultan-01-1600.avif 1600w" sizes="(min-width:900px) 32vw, 50vw"><img src="epk-assets/shared/img/sultan-01-960.webp" srcset="epk-assets/shared/img/sultan-01-480.webp 480w, epk-assets/shared/img/sultan-01-960.webp 960w, epk-assets/shared/img/sultan-01-1600.webp 1600w" sizes="(min-width:900px) 32vw, 50vw" width="1600" height="1068" alt="Guitarist playing in front of blue and green psychedelic projections" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p7 w1 h2 tall" data-full="epk-assets/shared/img/band-records-1200.webp" data-orig="pictures/gallery/hero-img.jpeg" data-cap="The band outside a record store"><picture><source type="image/avif" srcset="epk-assets/shared/img/band-records-480.avif 480w, epk-assets/shared/img/band-records-800.avif 800w, epk-assets/shared/img/band-records-1200.avif 1200w" sizes="(min-width:900px) 16vw, 50vw"><img src="epk-assets/shared/img/band-records-800.webp" srcset="epk-assets/shared/img/band-records-480.webp 480w, epk-assets/shared/img/band-records-800.webp 800w, epk-assets/shared/img/band-records-1200.webp 1200w" sizes="(min-width:900px) 16vw, 50vw" width="1200" height="1778" alt="The band and friends crowded together outside a record store at night" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p8 w3 h2 wide" data-full="epk-assets/shared/img/wonderville-22-1600.webp" data-orig="pictures/gallery/BlahsumWonderville-22.jpg" data-cap="Backstage at Wonderville"><picture><source type="image/avif" srcset="epk-assets/shared/img/wonderville-22-480.avif 480w, epk-assets/shared/img/wonderville-22-960.avif 960w, epk-assets/shared/img/wonderville-22-1600.avif 1600w" sizes="(min-width:900px) 48vw, 100vw"><img src="epk-assets/shared/img/wonderville-22-960.webp" srcset="epk-assets/shared/img/wonderville-22-480.webp 480w, epk-assets/shared/img/wonderville-22-960.webp 960w, epk-assets/shared/img/wonderville-22-1600.webp 1600w" sizes="(min-width:900px) 48vw, 100vw" width="1600" height="1066" alt="Band members clowning for a wide-angle camera, one pouring a drink" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p9 w2 h2" data-full="epk-assets/shared/img/fest-2-1600.webp" data-orig="pictures/gallery/BlahsumFestPhoto2.jpeg" data-cap="On the festival stage, black and white"><picture><source type="image/avif" srcset="epk-assets/shared/img/fest-2-480.avif 480w, epk-assets/shared/img/fest-2-960.avif 960w, epk-assets/shared/img/fest-2-1600.avif 1600w" sizes="(min-width:900px) 32vw, 50vw"><img src="epk-assets/shared/img/fest-2-960.webp" srcset="epk-assets/shared/img/fest-2-480.webp 480w, epk-assets/shared/img/fest-2-960.webp 960w, epk-assets/shared/img/fest-2-1600.webp 1600w" sizes="(min-width:900px) 32vw, 50vw" width="1600" height="1067" alt="Black-and-white photo of the band on a festival stage" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p10 w1 h2" data-full="epk-assets/shared/img/teafactory-02-960.webp" data-orig="pictures/gallery/BlahsumTeaFactory02.jpg" data-cap="Trumpet in the crowd"><picture><source type="image/avif" srcset="epk-assets/shared/img/teafactory-02-480.avif 480w, epk-assets/shared/img/teafactory-02-960.avif 960w" sizes="(min-width:900px) 16vw, 50vw"><img src="epk-assets/shared/img/teafactory-02-960.webp" srcset="epk-assets/shared/img/teafactory-02-480.webp 480w, epk-assets/shared/img/teafactory-02-960.webp 960w" sizes="(min-width:900px) 16vw, 50vw" width="960" height="640" alt="Trumpet player in the crowd with streaks of light overhead" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p11 w2 h2" data-full="epk-assets/shared/img/sultan-04-960.webp" data-orig="pictures/gallery/BlahsumSultan04.jpg" data-cap="Red and blue light on stage"><picture><source type="image/avif" srcset="epk-assets/shared/img/sultan-04-480.avif 480w, epk-assets/shared/img/sultan-04-960.avif 960w" sizes="(min-width:900px) 32vw, 50vw"><img src="epk-assets/shared/img/sultan-04-960.webp" srcset="epk-assets/shared/img/sultan-04-480.webp 480w, epk-assets/shared/img/sultan-04-960.webp 960w" sizes="(min-width:900px) 32vw, 50vw" width="960" height="640" alt="The band on stage under red and blue light" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p12 w2 h2" data-full="epk-assets/shared/img/finals-20-1600.webp" data-orig="pictures/gallery/BlahsumFinals-20.jpg" data-cap="Light painting at a packed show"><picture><source type="image/avif" srcset="epk-assets/shared/img/finals-20-480.avif 480w, epk-assets/shared/img/finals-20-960.avif 960w, epk-assets/shared/img/finals-20-1600.avif 1600w" sizes="(min-width:900px) 32vw, 50vw"><img src="epk-assets/shared/img/finals-20-960.webp" srcset="epk-assets/shared/img/finals-20-480.webp 480w, epk-assets/shared/img/finals-20-960.webp 960w, epk-assets/shared/img/finals-20-1600.webp 1600w" sizes="(min-width:900px) 32vw, 50vw" width="1600" height="1067" alt="Band playing in a packed bar, pink light trails across the frame" loading="lazy" decoding="async"></picture></button>
+    <button type="button" class="p13 w2 h2" data-full="epk-assets/shared/img/scorp-hero-1600.webp" data-orig="pictures/gallery/hero-img-scorp.jpg" data-cap="Singer with arm raised, in the crowd"><picture><source type="image/avif" srcset="epk-assets/shared/img/scorp-hero-480.avif 480w, epk-assets/shared/img/scorp-hero-960.avif 960w, epk-assets/shared/img/scorp-hero-1600.avif 1600w" sizes="(min-width:900px) 32vw, 50vw"><img src="epk-assets/shared/img/scorp-hero-960.webp" srcset="epk-assets/shared/img/scorp-hero-480.webp 480w, epk-assets/shared/img/scorp-hero-960.webp 960w, epk-assets/shared/img/scorp-hero-1600.webp 1600w" sizes="(min-width:900px) 32vw, 50vw" width="1600" height="1067" alt="Singer with arm raised in a crowded bar" loading="lazy" decoding="async"></picture></button></div>
+ <p class="press-note">Every photo opens in full colour with a link to the full-resolution original for press use.</p>
+</section>
+</main>
+
+<footer id="contact" class="contact" aria-labelledby="contact-h">
+ <h2 id="contact-h" class="spray">CONTACT<em>booking, press &amp; everything else</em></h2>
+ <p class="note">The fastest way to reach Blahsum for booking and press is a direct message on Instagram or Facebook.</p>
+ <ul class="links"><li><a href="https://www.instagram.com/blahsum/"><b>Instagram</b><span>@blahsum</span></a></li>
+<li><a href="https://www.facebook.com/blahsumx/"><b>Facebook</b><span>/blahsumx</span></a></li>
+<li><a href="https://www.youtube.com/@BlahSumX"><b>YouTube</b><span>@BlahSumX</span></a></li>
+<li><a href="https://twitter.com/BLAHSUM"><b>X / Twitter</b><span>@BLAHSUM</span></a></li>
+<li><a href="https://www.bandsintown.com/a/10653133"><b>Shows</b><span>Bandsintown</span></a></li></ul>
+ <div class="foot"><img src="epk-assets/shared/img/logo-white-730.webp" width="730" height="610" alt="Blahsum globe logo" loading="lazy"><span>Live photo: Avram Wolf.</span><span>Copyright © 2001-3030 BLAHSUM. All Rights Reserved.</span></div>
+</footer>
+<dialog class="lb" aria-label="Photo viewer">
+  <button class="lb-x" type="button">Close ✕</button>
+  <div class="in"><img alt=""><div class="bar"><span class="lb-cap"></span><a class="lb-dl" href="#" download>Download full-res ↓</a></div></div>
 </dialog>
-
-<script type="module" src="epk-assets/epk5/stage.js"></script>
+<script>/* shared tiny helpers: YouTube facade + Spotify facade + lightbox w/ View Transitions */
+(()=>{
+  const q=(s,r=document)=>[...r.querySelectorAll(s)];
+  q('[data-yt]').forEach(b=>b.addEventListener('click',()=>{
+    const f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';
+    f.title=b.dataset.title||'YouTube video';
+    f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    f.allowFullscreen=true;f.className=b.className;
+    b.replaceWith(f);f.focus();
+  }));
+  q('[data-spotify]').forEach(b=>b.addEventListener('click',()=>{
+    const f=document.createElement('iframe');
+    f.src='https://open.spotify.com/embed/'+b.dataset.spotify+'?utm_source=generator&theme=0';
+    f.title=b.dataset.title||'Spotify player';f.loading='lazy';
+    f.allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    f.className='spotify-frame';
+    b.replaceWith(f);
+  }));
+  const dlg=document.querySelector('dialog.lb');
+  if(!dlg) return;
+  const img=dlg.querySelector('img'),cap=dlg.querySelector('.lb-cap'),dl=dlg.querySelector('.lb-dl');
+  const vt=(fn)=>document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches?document.startViewTransition(fn):(fn(),null);
+  let from=null;
+  q('[data-full]').forEach(b=>b.addEventListener('click',()=>{
+    const t=b.querySelector('img');from=t;
+    t.style.viewTransitionName='lb-photo';
+    vt(()=>{
+      t.style.viewTransitionName='';
+      img.src=b.dataset.full;img.alt=t.alt;
+      img.style.viewTransitionName='lb-photo';
+      cap.textContent=b.dataset.cap||t.alt;
+      if(dl){dl.href=b.dataset.orig||b.dataset.full;}
+      dlg.showModal();
+    });
+  }));
+  const close=()=>{
+    if(!dlg.open) return;
+    const t=from;
+    const tr=vt(()=>{
+      img.style.viewTransitionName='';
+      if(t) t.style.viewTransitionName='lb-photo';
+      dlg.close();
+    });
+    const done=()=>{if(t)t.style.viewTransitionName='';};
+    tr?tr.finished.then(done):done();
+  };
+  dlg.addEventListener('click',e=>{if(e.target===dlg||e.target.closest('.lb-x'))close();});
+  dlg.addEventListener('cancel',e=>{e.preventDefault();close();});
+})();
+</script>
 </body>
 </html>
