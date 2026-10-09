@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Blahsum — EPK (EX · Xerox Room)</title>
+<meta name="description" content="Blahsum electronic press kit: psychedelic rap jam band from Brooklyn, NY. Post-Americana live.">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="icon" href="pictures/icons/favicon-32x32.png" type="image/png">
+<link rel="preload" href="epk-assets/epkEX/fonts/BigShoulders.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="epk-assets/epkEX/fonts/PlexMono-500.woff2" as="font" type="font/woff2" crossorigin>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
+<script>document.documentElement.classList.replace('no-js','js')</script>
+<style>
+@font-face{font-family:"Big Shoulders Display";src:url(epk-assets/epkEX/fonts/BigShoulders.woff2) format("woff2");font-weight:500 900;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(epk-assets/epkEX/fonts/PlexMono-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Permanent Marker";src:url(epk-assets/epkEX/fonts/PermanentMarker.woff2) format("woff2");font-display:swap}
+:root{--ink:#0b0b0b;--paper:#efede6;--paper2:#e4e1d8;--white:#fff;--mute:#5b5952;--line:#0b0b0b;
+  --display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--mono:"Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --sans:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;--mark:"Permanent Marker","Comic Sans MS",cursive;
+  --pad:clamp(16px,3.4vw,44px);--out:cubic-bezier(.2,.8,.2,1);--bar:56px;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  --dots:radial-gradient(circle,#000 0 34%,transparent 38%) 0 0/4px 4px;color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ink);color:var(--ink);font-family:var(--sans);-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--bar) + 8px)}
+body{margin:0;font-size:clamp(15px,.5vw + 12px,18px);line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px #000}
+h2:focus,h2:focus-visible{outline:none;box-shadow:none}
+.sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0}
+.skip{position:fixed;left:12px;top:12px;z-index:300;background:#fff;color:#000;padding:10px 14px;font:500 13px var(--mono);text-transform:uppercase;text-decoration:none;border:2px solid #000;transform:translateY(-220%)}
+.skip:focus{transform:none}
+.b{display:inline-flex;align-items:center;justify-content:center;gap:.45em;padding:.62em 1em;border:2px solid currentColor;background:transparent;font:500 clamp(12px,.3vw + 10px,14px)/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform .2s var(--out),background .15s,color .15s}
+.b:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 currentColor}
+.b:active{transform:none;box-shadow:none}
+.b.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.b svg{width:1.1em;height:1.1em;flex:none}
+
+/* ---------- top bar (always visible) ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:100;height:calc(var(--bar) + env(safe-area-inset-top));padding:env(safe-area-inset-top) var(--pad) 0;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff;transition:background .3s,color .3s,border-color .3s;border-bottom:2px solid transparent}
+.top .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.top .brand svg{width:clamp(108px,11vw,150px);height:auto;filter:drop-shadow(0 1px 8px rgba(0,0,0,.8))}
+.top .brand small{font:500 10px/1.25 var(--mono);letter-spacing:.14em;text-transform:uppercase;opacity:.85;white-space:nowrap}
+.mode{display:flex;border:2px solid currentColor;background:rgba(0,0,0,.55)}
+.mode button{all:unset;cursor:pointer;padding:8px clamp(10px,1.4vw,16px);font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.mode button+button{border-left:2px solid currentColor}
+.mode button[aria-pressed="true"]{background:#fff;color:#000}
+.mode button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.in-info .top{background:var(--paper);color:var(--ink);border-bottom-color:var(--ink)}
+.in-info .top .brand svg{filter:none}
+.in-info .mode{background:transparent}
+.in-info .mode button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+@media (max-width:520px){.top .brand small{display:none}}
+
+/* ---------- the room ---------- */
+#app{position:relative;height:100svh;min-height:540px;overflow:hidden;background:#000 url(data:image/webp;base64,UklGRtoBAABXRUJQVlA4IM4BAAAQCgCdASooACgAPu1uqlEppqOiqrqpWTAdiWkAEglaPypq/3BDTGNBE1yy9HrwDJjGYEMaE5ZDCprPyLDvOsofDn0IQoNjlwnTjr41eF+AncPfpvDWowiAAAD+0eEPZA+vCSwN8IrTUNCLiHJLhM87tpvwQ6fZ+4ucvdYGI+oDDPgQ9YtZZwy75n1QIuYHt0O/hvr9u/gTI9Q8Gklu79Wr5d9SOC14MIsxxZv/XBi1Twm+HFYHcCCi2MaR71pMXojibC/bkVqyPZjswtssSvsAHxSe6oWmnSPNT0skQ9Ps/bZJVOnwjf/NeS8ik+zpzOUpZzY5A1M9BFz0uQjzU1Pmy774N3l/Osbcs5lXVmKFAQ6l0Uc3KHWTepKYeUV0jJKj0bUffs1AugPKqAwqXG3S9NgVAdfDJaDQ2ZXnuDteQv2c4PXXBV/MNypljOElG4uicZGTkEmx3OcJ1jwizM15wVNehg0yeqOzY7K3zsMVHFiDrcxv4RnKypiWMeN5K0t68AF7q2AQ3UeEPa8JLGbSDi7VeKUm9x28vGZbOnZbjyNcNynHx1WXaXcopOpgLh2uY6pGMcRgC9eXqq8HmBN/2xvQfC/FUMNNZAAAAAA=) center/cover no-repeat;isolation:isolate;color:#fff}
+#app .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:grayscale(1) contrast(1.25)}
+#app .poster:not([src]){display:none}
+#app::after{content:"";position:absolute;inset:0;background:var(--dots);opacity:.22;mix-blend-mode:multiply;pointer-events:none;z-index:1}
+.gl-on #app::after{display:none}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:crosshair;opacity:0;transition:opacity .6s}
+#gl.drag{cursor:grabbing}
+.gl-on #gl{opacity:1}
+.gl-on #app .poster{display:none}
+.hud{position:absolute;z-index:20}
+.loader{inset:0;display:grid;place-content:center;justify-items:center;gap:12px;background:rgba(0,0,0,.5);pointer-events:none;transition:opacity .5s,visibility 0s .5s}
+.loader p{margin:0;font:500 12px var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.loader i{display:block;width:200px;height:10px;border:2px solid #fff;background:linear-gradient(90deg,#fff var(--p,0%),transparent 0)}
+.ready .loader,.no-gl .loader,.no-js .loader{opacity:0;visibility:hidden}
+.dock{left:0;right:0;bottom:0;display:flex;justify-content:center;padding:0 var(--pad) max(14px,env(safe-area-inset-bottom));pointer-events:none}
+.dock ul{pointer-events:auto;list-style:none;margin:0;padding:0;display:flex;border:2px solid #fff;background:#000;overflow-x:auto;scrollbar-width:none;max-width:100%;box-shadow:5px 5px 0 rgba(255,255,255,.25)}
+.dock li+li{border-left:2px solid #fff}
+.dock button{all:unset;cursor:pointer;display:block;padding:11px clamp(10px,1.5vw,20px);font:800 clamp(16px,.6vw + 12px,20px)/1 var(--display);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.dock button:hover,.dock button[aria-pressed="true"]{background:#fff;color:#000}
+.dock button:focus-visible{outline:3px solid #fff;outline-offset:-6px;box-shadow:none;background:#fff;color:#000}
+.tools{right:var(--pad);top:50%;translate:0 -50%;display:grid;gap:6px;opacity:0;transition:opacity .5s}
+.ready.gl .tools{opacity:1}
+.tools button{all:unset;cursor:pointer;box-sizing:border-box;width:44px;min-height:44px;display:grid;place-items:center;border:2px solid #fff;background:#000;font:500 10px/1.1 var(--mono);text-transform:uppercase;letter-spacing:.06em;text-align:center;padding:4px 2px}
+.tools button svg{width:18px;height:18px}
+.tools button:hover,.tools button[aria-pressed="true"]{background:#fff;color:#000}
+.tools button:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:none}
+.tools hr{border:0;height:6px;margin:0}
+.no-gl .tools,.no-js .tools{display:none}
+.credit{right:var(--pad);bottom:max(76px,calc(env(safe-area-inset-bottom) + 70px));margin:0;font:500 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;background:#000;padding:3px 6px;border:1px solid #fff}
+.hint{left:50%;bottom:max(118px,calc(env(safe-area-inset-bottom) + 112px));translate:-50% 0;margin:0;padding:7px 12px;background:#fff;color:#000;font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;text-align:center;max-width:min(92vw,560px);box-shadow:4px 4px 0 #000;rotate:-1deg;opacity:0;transition:opacity .6s;pointer-events:none}
+.show-hint .hint{opacity:1}
+.cue{left:50%;bottom:max(78px,calc(env(safe-area-inset-bottom) + 72px));translate:-50% 0;all:unset;position:absolute;z-index:20;left:50%;translate:-50% 0;bottom:max(78px,calc(env(safe-area-inset-bottom) + 72px));cursor:pointer;font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;padding:8px 10px;display:flex;align-items:center;gap:8px;text-shadow:0 1px 6px #000}
+.cue::after{content:"";width:10px;height:10px;border:solid currentColor;border-width:0 2px 2px 0;rotate:45deg;translate:0 -3px;animation:bob 1.6s ease-in-out infinite}
+.cue:focus-visible{outline:3px solid #fff;box-shadow:none}
+@keyframes bob{50%{translate:0 2px}}
+.enter{display:none}
+.no-gl.can-gl .enter{display:inline-flex;position:absolute;z-index:22;left:50%;top:50%;translate:-50% -50%;background:#000;color:#fff;border-color:#fff}
+/* hotspots */
+#spots{position:absolute;inset:0;z-index:15;pointer-events:none}
+.no-gl #spots{display:none}
+.spot{all:unset;box-sizing:border-box;pointer-events:auto;cursor:pointer;position:absolute;left:0;top:0;display:flex;align-items:center;gap:7px;translate:-11px -11px;opacity:0;transition:opacity .4s}
+.ready .spot.vis{opacity:1}
+.spot i{position:relative;flex:none;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle,#fff 0 4px,#000 5px 7px,#fff 8px 9px,transparent 10px)}
+.spot i::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:ping 2.2s var(--out) infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.2);opacity:0}}
+.spot b{padding:5px 9px 4px;background:#000;color:#fff;border:2px solid #fff;font:800 15px/1 var(--display);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;rotate:var(--r,-2deg);transition:background .15s,color .15s,rotate .2s}
+.spot.member i{width:16px;height:16px;translate:3px 0;background:radial-gradient(circle,#fff 0 3px,#000 4px 5px,transparent 6px)}
+.spot.member b{opacity:0;font-size:13px;transition:opacity .2s}
+.spot:hover b,.spot:focus-visible b{background:#fff;color:#000;opacity:1;rotate:0deg}
+.spot:focus-visible{outline:none;box-shadow:none}.spot:focus-visible i{outline:3px solid #fff;outline-offset:4px}
+@media (hover:none){.spot.member b{opacity:.85;font-size:11px;padding:3px 5px 2px}}
+/* stickers */
+#stickers{position:absolute;inset:0;z-index:12;pointer-events:none;overflow:hidden}
+.stk{position:absolute;left:0;top:0;will-change:transform}
+.stk i{display:block;translate:-50% -50%;rotate:var(--r);font-style:normal;white-space:nowrap;animation:slap .38s cubic-bezier(.3,1.6,.5,1) both;transform-origin:50% 50%}
+@keyframes slap{0%{scale:2.4;opacity:0}60%{opacity:1}100%{scale:1}}
+.stk .box{display:block;padding:6px 10px 5px;background:#fff;color:#000;border:2px solid #000;font:900 22px/1 var(--display);letter-spacing:.03em;text-transform:uppercase;box-shadow:3px 3px 0 #000}
+.stk .inv{display:block;padding:6px 10px 5px;background:#000;color:#fff;border:2px solid #fff;font:900 22px/1 var(--display);text-transform:uppercase}
+.stk .round{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#fff;color:#000;border:3px double #000;font:900 15px/1 var(--display);text-transform:uppercase;text-align:center;white-space:normal;padding:10px}
+.stk .mark{display:block;font:30px/1 var(--mark);color:#fff;text-shadow:2px 2px 0 #000,-1px -1px 0 #000}
+.stk .tape{display:block;padding:4px 14px;background:rgba(239,237,230,.88);color:#000;font:500 13px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.08em;clip-path:polygon(2% 0,98% 6%,100% 92%,0 100%)}
+.stk .star{display:grid;place-items:center;width:78px;height:78px;background:#fff;color:#000;font:900 13px/1 var(--display);text-transform:uppercase;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+
+/* ---------- peek drawer (in-room quick read) ---------- */
+.peek{position:fixed;z-index:80;top:calc(var(--bar) + env(safe-area-inset-top));right:0;bottom:0;width:min(500px,100vw);overflow:auto;overscroll-behavior:contain;background:var(--paper);color:var(--ink);border-left:3px solid #000;box-shadow:-10px 0 0 rgba(0,0,0,.35);transform:translateX(105%);visibility:hidden;transition:transform .45s var(--out),visibility 0s .45s}
+.peek.open{transform:none;visibility:visible;transition:transform .45s var(--out),visibility 0s}
+.peek-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;gap:8px;padding:12px var(--pad);background:var(--paper);border-bottom:2px solid #000}
+.peek .sheet{padding:18px var(--pad) 40px}
+.peek .sheet section{padding:0;border:0;max-width:none}
+.peek h2{font-size:clamp(40px,5vw,60px)}
+.peek .cols,.peek .album{display:block}
+.peek .vids{grid-template-columns:1fr}
+.peek .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
+@media (max-width:700px){
+  .peek{top:auto;left:0;width:100%;height:min(76svh,660px);border-left:0;border-top:3px solid #000;box-shadow:0 -10px 0 rgba(0,0,0,.35);transform:translateY(105%)}
+  .peek-head::before{content:"";position:absolute;left:50%;top:4px;width:40px;height:4px;margin-left:-20px;background:#000}
+}
+
+/* ---------- info page (normal document) ---------- */
+#info{position:relative;background:var(--paper) var(--grain);color:var(--ink);border-top:3px solid #000}
+.index{position:relative;display:flex;flex-wrap:wrap;gap:0;border-bottom:3px solid #000;font-family:var(--display);text-transform:uppercase}
+.index a{flex:1 1 auto;text-align:center;padding:14px 12px;font-weight:900;font-size:clamp(18px,1.4vw + 10px,28px);letter-spacing:.03em;text-decoration:none;border-right:2px solid #000}
+.index a:last-child{border-right:0}
+.index a:hover{background:#000;color:var(--paper)}
+.info-intro{padding:clamp(40px,6vw,90px) var(--pad) clamp(30px,4vw,56px);max-width:1180px;margin:0 auto;display:grid;gap:18px}
+.info-intro .big{font:900 clamp(64px,13vw,190px)/.8 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin:0}
+.info-intro .big span{display:inline-block;background:#000;color:var(--paper);padding:0 .08em;rotate:-2deg}
+.info-intro p{margin:0;font:500 clamp(13px,.4vw + 11px,16px)/1.5 var(--mono);text-transform:uppercase;letter-spacing:.06em;max-width:60ch}
+#info section{padding:clamp(48px,7vw,100px) var(--pad);max-width:1180px;margin:0 auto;border-top:3px solid #000}
+.kick{display:flex;align-items:center;gap:10px;margin:0 0 14px;font:500 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.kick span{background:#000;color:var(--paper);padding:5px 7px}
+h2{font:900 clamp(52px,9vw,128px)/.82 var(--display);text-transform:uppercase;letter-spacing:-.005em;margin:0 0 .3em}
+.lede{font-size:clamp(21px,1.5vw + 12px,32px);line-height:1.15;font-weight:700;letter-spacing:-.01em;margin:0 0 1em;text-wrap:balance}
+.lede em,.pa{font-style:normal;background:#000;color:var(--paper);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.peek .lede em,.peek .pa{background:#000;color:var(--paper)}
+#info p,.peek p{text-wrap:pretty}
+.cols{display:grid;gap:clamp(20px,4vw,56px)}
+@media (min-width:900px){#info .cols{grid-template-columns:1fr 1fr}}
+.lineup{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:0;border:3px solid #000;background:#000}
+.lineup li{background:var(--paper);padding:12px 14px;display:grid;outline:1.5px solid #000}
+.lineup b{font:900 26px/1 var(--display);text-transform:uppercase}
+.lineup span{font:500 11px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+.lineup li.hl{background:#000;color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:22px 0 0}
+.chips a{display:inline-flex;padding:.55em .8em;border:2px solid #000;text-decoration:none;font:500 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.chips a:hover{background:#000;color:var(--paper)}
+.album{display:grid;gap:26px;align-items:center}
+@media (min-width:760px){#info .album{grid-template-columns:minmax(0,380px) 1fr}}
+.cover{position:relative;aspect-ratio:1;overflow:hidden;background:#222;border:3px solid #000;box-shadow:8px 8px 0 #000;rotate:-1.5deg}
+.cover img,.cover iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.cover img{filter:grayscale(1) contrast(1.2)}
+.cover::after{content:"";position:absolute;inset:0;background:var(--dots);opacity:.18;pointer-events:none}
+.cover:has(iframe)::after{display:none}
+.cover .b{position:absolute;right:12px;bottom:12px;z-index:2;background:#000;color:#fff;border-color:#fff}
+.vids{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.vid{margin:0}
+.vid .frame{position:relative;aspect-ratio:16/9;overflow:hidden;background:#222;border:3px solid #000}
+.vid .frame button{all:unset;position:absolute;inset:0;cursor:pointer}
+.vid .frame img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.35) brightness(1.05)}
+.vid .frame button::after{content:"";position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:#000 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%23fff'/%3E%3C/svg%3E") 56% 50%/26px no-repeat;border:2px solid #fff;transition:scale .2s}
+.vid .frame button:hover::after{scale:1.12}
+.vid .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid figcaption{margin-top:8px;font:900 24px/1 var(--display);text-transform:uppercase}
+.photos{display:grid;gap:14px;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(100px,15vw,200px);grid-auto-flow:dense;padding:8px}
+.photos button{all:unset;cursor:zoom-in;position:relative;background:#222;border:3px solid #fff;outline:2px solid #000;box-shadow:5px 5px 0 #000;rotate:var(--r,0deg);transition:rotate .25s var(--out),scale .25s var(--out)}
+.photos button:nth-child(3n+1){--r:-1.6deg}.photos button:nth-child(3n+2){--r:1.2deg}.photos button:nth-child(4n){--r:-.6deg}
+.photos button::before{content:"";position:absolute;z-index:2;top:-10px;left:50%;width:60px;height:18px;margin-left:-30px;background:rgba(239,237,230,.8);rotate:-4deg;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.photos button.tall{grid-row:span 2}.photos button.wide{grid-column:span 2}
+.photos img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.2)}
+.photos button:hover,.photos button:focus-visible{rotate:0deg;scale:1.03;z-index:3}
+.photos button:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:none}
+@media (max-width:600px){.photos{grid-template-columns:repeat(2,1fr)}.photos button.wide{grid-column:span 2}}
+.dm{display:grid;gap:18px;border:3px solid #000;background:#000;color:var(--paper);padding:clamp(22px,4vw,44px);box-shadow:10px 10px 0 rgba(0,0,0,.25)}
+.dm p{margin:0}
+.dm .say{font:900 clamp(40px,7vw,96px)/.85 var(--display);text-transform:uppercase}
+.dm .acts{display:flex;flex-wrap:wrap;gap:10px}
+.dm .b{color:var(--paper)}
+.dm .b.solid{background:var(--paper);color:#000;border-color:var(--paper)}
+.peek .dm .say{font-size:48px}
+.rows{display:grid;gap:0;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));margin-top:22px;border:3px solid #000}
+.rows a{display:grid;padding:14px 16px;text-decoration:none;outline:1.5px solid #000;background:var(--paper)}
+.rows a b{font:900 24px/1 var(--display);text-transform:uppercase}
+.rows span{font:500 11px/1.5 var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.rows a:hover{background:#000;color:var(--paper)}
+.muted{color:var(--mute)}
+.small{font:500 12px/1.6 var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.member-card{display:none}
+.peek .member-card{display:block}
+#info footer{padding:40px var(--pad) 120px;max-width:1180px;margin:0 auto;border-top:3px solid #000;font:500 12px/1.6 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+/* re-enter */
+.again{position:fixed;z-index:90;right:var(--pad);bottom:max(16px,env(safe-area-inset-bottom));background:#000;color:#fff;border-color:#000;box-shadow:4px 4px 0 rgba(0,0,0,.3);opacity:0;translate:0 12px;pointer-events:none;transition:opacity .3s,translate .3s var(--out)}
+.in-info .again{opacity:1;translate:0 0;pointer-events:auto}
+.again:hover{box-shadow:4px 4px 0 #000;background:#fff;color:#000}
+/* lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100svh;color:#fff}
+dialog.lb::backdrop{background:rgba(0,0,0,.94)}
+.lb figure{margin:0;position:absolute;inset:60px 12px 74px;display:grid;place-items:center}
+.lb img{max-width:calc(100vw - 24px);max-height:calc(100svh - 140px);object-fit:contain;border:4px solid #fff}
+.lb .bar{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:8px}
+.lb .x{position:absolute;right:12px;top:12px}
+.lb .b{color:#fff;background:#000}
+@media (max-width:600px){.credit{right:auto;left:var(--pad);top:calc(var(--bar) + env(safe-area-inset-top) + 8px);bottom:auto}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wm" viewBox="0 0 729 140"><path fill="currentColor" fill-rule="evenodd" d="M66 139C67.2 138.3 67.8 137.5 67.5 136.9C67.1 136.4 67.3 136.0 67.9 136.0C69.8 136.0 76.1 129.7 78.3 125.6C80.4 121.8 80.5 120.2 80.5 101.5C80.5 78.4 79.6 74.6 72.9 68.5L69 65L72 62C76.8 56.8 78.4 50.4 78.5 36.0C78.5 17.3 74.1 9.2 61.2 4.4C54.0 1.7 4.7 1.0 1.9 3.6C0.1 5.2 0.0 5.2 0.0 2.7L0 0L223 0C419.5 0.1 444.9 0.3 440.0 1.6C433.1 3.4 427.4 7.3 423.5 12.9L420 17L420 38C419.8 60.5 420.6 64.0 427.2 69.5C434.3 75.5 437.4 76.4 453.1 77.0C463.3 77.3 468.2 77.9 469.3 78.9C470.8 80.1 471.0 82.7 471.0 98.0C471.0 119.7 471.4 119.0 458.4 119.0C446.3 119.0 445.7 118.5 445.2 108.3C444.7 97.8 444.9 98.0 431.5 98.0C416.7 98.0 416.6 98.0 417.1 112.7C417.5 124.2 419.7 130.2 425.2 134.7C431.8 140.0 431.9 140.0 411.6 140.0C400.0 140.0 393.1 139.6 393.5 139.1C394.6 137.2 394.0 4.8 392.9 3.3C392.1 2.4 388.7 2.0 380.5 2.0C364.9 2.0 366.0 -0.0 366.0 29.8L366 54L354 54L341 54L341 30C341.0 -0.1 342.1 2.0 326.3 2.0C316.9 2.0 315.1 2.3 313.7 3.8C311.5 6.2 311.1 136.7 313.2 138.8C314.1 139.7 311.4 140.0 300.7 140.0C287.9 140.0 287.1 139.9 288.0 138.2C289.2 136.1 264.3 6.2 262.1 3.6C260.2 1.4 226.9 1.2 225.1 3.4C223.2 5.7 198.0 137.3 199.2 138.8C200.0 139.7 197.5 140.0 187.1 140.0C177.6 140.0 174.1 139.7 174.6 138.9C175.6 137.1 175.0 119.7 173.8 118.3C173.0 117.3 167.7 117.0 152.4 117.0L132 117L132 61C132.0 8.3 131.9 5.2 130.2 3.7C127.8 1.5 106.9 1.2 105.1 3.3C104.0 4.8 103.4 137.2 104.5 139.1C104.9 139.6 97.4 140.0 84.8 140.0C70.4 139.9 65.0 139.6 66.3 138.9ZM225 139C225.3 138.1 226.5 133.4 227.4 128.5C228.3 123.5 229.3 118.3 229.6 116.8L230 114L242 114L255 114L257 126C258.2 132.2 259.6 138.0 260.2 138.7C261.0 139.7 257.5 140.0 242.5 140.0C227.6 140.0 224.0 139.7 224.8 138.8ZM340 139C340.7 137.9 341.0 129.5 341.0 107.3L341 77L354 77L366 77L366 107C366.0 129.5 366.3 137.9 367.2 138.8C368.1 139.7 365.1 140.0 353.5 140.0C341.9 140.0 338.9 139.7 339.8 138.8ZM488 138C488.9 137.3 490.7 135.5 492.2 134.3C498.8 128.5 499.5 125.1 499.5 97.0C499.5 68.5 499.3 67.4 491.8 60.3C485.6 54.3 480.1 52.6 464.5 52.0C456.8 51.7 449.9 51.1 449.2 50.7C448.4 50.1 448.0 46.4 448.0 38.0C448.0 24.0 448.0 24.0 458.8 24.0C466.8 24.0 469.0 25.5 469.0 31.2C469.0 36.6 470.3 37.1 484.1 36.8L496 36L497 29C497.4 14.3 490.9 5.4 476.9 1.6C472.1 0.3 485.6 0.1 600.2 0.1L729 0L729 3C729.0 5.2 728.9 5.2 727.2 3.7C724.7 1.4 692.9 1.2 691.1 3.4C690.5 4.1 687.1 19.5 683.5 37.5C680.0 55.5 677.0 70.4 676.8 70.6C676.6 70.7 673.4 56.2 669.6 38.2C665.6 19.1 662.1 4.8 661.2 3.8C658.9 1.0 627.1 1.1 624.7 3.8C622.5 6.2 622.1 136.7 624.2 138.8C625.1 139.7 621.1 140.0 606.2 140.0L587 140L592 135C600.5 125.7 600.0 130.2 600.0 63.8C600.0 8.4 599.9 5.2 598.2 3.7C595.4 1.1 576.0 1.2 573.7 3.8C572.2 5.5 572.0 10.9 572.0 60.8L572 116L570 117C568.3 118.5 565.3 119.0 560.9 119.0C550.2 119.0 551.0 124.0 551.0 60.3C551.0 8.3 550.9 5.2 549.2 3.7C546.3 1.1 526.0 1.2 523.6 3.9C522.1 5.6 521.9 10.4 522.2 64.1C522.5 128.9 522.2 125.7 529.3 133.1C536.5 140.6 538.1 140.0 511.0 140.0C488.2 140.0 486.8 139.9 488.1 138.3ZM648 139C648.8 138.5 649.1 125.1 649.0 109.3C649.0 93.5 649.1 80.8 649.4 81.1C649.8 81.5 660.6 131.0 661.3 135.5C661.4 136.6 661.9 138.1 662.3 138.8C662.9 139.7 661.3 140.0 655.5 140.0C650.7 140.0 648.1 139.6 648.5 139.0ZM688 138C688.5 137.3 691.5 124.4 694.5 109.5C697.6 94.7 700.3 82.4 700.6 82.1C700.8 81.8 701.0 94.3 701.0 109.8C700.9 125.3 701.2 138.4 701.5 139.0C701.9 139.6 699.3 140.0 694.6 140.0C687.6 140.0 687.1 139.9 688.0 138.2ZM29 97L29 77L38 77C52.5 77.0 52.0 76.3 52.0 97.5C52.0 118.2 52.8 117.0 38.6 117.0L29 117L29 97ZM235 90C235.0 88.1 242.4 51.6 242.6 52.5C243.0 53.6 250.0 89.8 250.0 90.6C250.0 90.8 246.6 91.0 242.5 91.0C238.4 91.0 235.0 90.7 235.0 90.2ZM29 40L29 26L38 26C44.2 26.0 48.0 26.4 48.8 27.2C49.6 28.0 50.0 32.2 50.0 39.5C50.0 53.7 49.8 54.0 37.7 54.0L29 54L29 40Z"/></symbol></svg>
+<a class="skip" href="#info">Skip to info</a>
+
+<header class="top">
+  <a class="brand" href="#top" data-room aria-label="Blahsum — back to the room"><svg viewBox="0 0 729 140" aria-hidden="true" focusable="false"><use href="#wm"/></svg><small>Post-Americana Live<br>Press kit</small></a>
+  <div class="mode" role="group" aria-label="View">
+    <button type="button" data-room aria-pressed="true" id="modeRoom">▶ Room</button>
+    <button type="button" data-go="info" aria-pressed="false" id="modeInfo">Info ↓</button>
+  </div>
+</header>
+
+<div id="app" aria-label="Interactive stage">
+  <span id="top" class="sr-only">Top</span>
+  <img class="poster" alt="Blahsum playing outside in front of a brick building with arched windows reading “Blahsum and Boojum”, “Coffee” and “Ice Cream”. Photo by Avram Wolf.">
+  <noscript><img class="poster" src="epk-assets/epkEX/scene/scene-full-960.webp" srcset="epk-assets/epkEX/scene/scene-full-960.webp 960w, epk-assets/epkEX/scene/scene-full-1600.webp 1600w" sizes="100vw" alt="Blahsum playing outside in front of a brick building. Photo by Avram Wolf."></noscript>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div id="stickers" aria-hidden="true"></div>
+  <div id="spots" role="group" aria-label="Things in the room — each opens part of the press kit"></div>
+  <div class="hud loader" aria-hidden="true"><p>Warming up the copier</p><i></i></div>
+  <p class="hud hint" id="hint" aria-hidden="true">Drag to look · tap a sign to read · tap anywhere to slap a sticker · scroll for the full press kit</p>
+  <button class="b enter" type="button" id="enterRoom">Enter the 3D room</button>
+  <div class="hud tools" role="toolbar" aria-label="Room controls" aria-orientation="vertical">
+    <button type="button" id="tZoomIn" aria-label="Step closer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.6" fill="none"/></svg></button>
+    <button type="button" id="tZoomOut" aria-label="Step back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="2.6" fill="none"/></svg></button>
+    <button type="button" id="tReset" aria-label="Recenter the view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="square"/></svg></button>
+    <hr>
+    <button type="button" id="tInk" aria-pressed="true" aria-label="Xerox print effect">Xerox</button>
+    <button type="button" id="tSound" aria-pressed="false" aria-label="Sound">Sound<br>off</button>
+    <button type="button" id="tClear" aria-label="Peel off all stickers">Peel</button>
+  </div>
+  <p class="hud credit">Photo · Avram Wolf</p>
+  <button class="cue" type="button" data-go="info">Full press kit</button>
+  <nav class="hud dock" aria-label="Press kit sections"><ul>
+    <li><button type="button" data-open="bio">Bio</button></li>
+    <li><button type="button" data-open="listen">Listen</button></li>
+    <li><button type="button" data-open="watch">Watch</button></li>
+    <li><button type="button" data-open="photos">Photos</button></li>
+    <li><button type="button" data-open="booking">Booking</button></li>
+  </ul></nav>
+</div>
+
+<aside class="peek" id="peek" aria-label="Quick read" tabindex="-1">
+  <div class="peek-head">
+    <button class="b" type="button" data-close-peek>✕ Back to the room</button>
+    <button class="b solid" type="button" data-go="" id="peekPage">On the page ↓</button>
+  </div>
+  <div class="sheet" id="peekBody"></div>
+</aside>
+
+<main id="info" aria-label="Blahsum press kit" tabindex="-1">
+  <nav class="index" aria-label="Sections"><a href="#bio">Bio</a><a href="#listen">Listen</a><a href="#watch">Watch</a><a href="#photos">Photos</a><a href="#booking">Booking</a></nav>
+  <div class="info-intro">
+    <p class="big">Blah<span>sum</span></p>
+    <p>Psychedelic rap jam band · Brooklyn, NY · Post-Americana live</p>
+  </div>
+  <section class="member-card" id="member" aria-labelledby="h-member">
+    <p class="kick"><span>On stage</span></p>
+    <h2 id="h-member" data-m-name></h2>
+    <p class="lede" data-m-role></p>
+    <p data-m-note></p>
+    <button class="b solid" type="button" data-open="bio">Read the full bio</button>
+  </section>
+  <section id="bio" aria-labelledby="h-bio">
+    <p class="kick"><span>01</span> the story</p>
+    <h2 id="h-bio">Bio</h2>
+    <p class="lede">Blahsum is a psychedelic rap jam band based out of Brooklyn, NY — together they alchemize a new sound: <em>Post-Americana</em>.</p>
+    <div class="cols">
+      <p>In the early days it was just frontman Garbo, writing lyrics and cutting together beats in his Chinatown home studio. He began to develop a following from a series of releases called the Moon Tapes — new collections of songs that debuted every full moon.</p>
+      <div>
+      <p>Over the years the live band has taken on a life of its own, stretching the songs further and further out with freewheeling arrangements and a no-two-shows-are-the-same ethos of exploration and improvisation. The group has expanded to include Garbo’s brother Zach M on the drums, Zach Schepis on lead guitar &amp; harmonica, Nate McManus on rhythm guitar &amp; trumpet, Alex Torke on the bass, and Dan Erbland on the saxophone.</p>
+      <p>Blahsum continues to showcase their unique blend of rock, jam, punk, and rap at venues along the east coast. Drawing upon American musical and cultural myths through a distorted lens, together they alchemize a new sound: <span class="pa">Post-Americana</span></p>
+      </div>
+    </div>
+    <ul class="lineup" aria-label="Lineup">
+      <li data-m="garbo"><b>Garbo</b><span>Frontman · lyrics &amp; beats</span></li>
+      <li data-m="zachm"><b>Zach M</b><span>Drums</span></li>
+      <li data-m="schepis"><b>Zach Schepis</b><span>Lead guitar &amp; harmonica</span></li>
+      <li data-m="nate"><b>Nate McManus</b><span>Rhythm guitar &amp; trumpet</span></li>
+      <li data-m="alex"><b>Alex Torke</b><span>Bass</span></li>
+      <li data-m="dan"><b>Dan Erbland</b><span>Saxophone</span></li>
+    </ul>
+    <ul class="chips" aria-label="Social media">
+      <li><a href="https://www.instagram.com/blahsum/" target="_blank" rel="noopener">Instagram ↗</a></li>
+      <li><a href="https://www.facebook.com/blahsumx/" target="_blank" rel="noopener">Facebook ↗</a></li>
+      <li><a href="https://www.youtube.com/@BlahSumX" target="_blank" rel="noopener">YouTube ↗</a></li>
+      <li><a href="https://twitter.com/BLAHSUM" target="_blank" rel="noopener">Twitter / X ↗</a></li>
+    </ul>
+  </section>
+  <section id="listen" aria-labelledby="h-listen">
+    <p class="kick"><span>02</span> listen</p>
+    <div class="album">
+      <div class="cover">
+        <img src="epk-assets/epkEX/photos/rockaway-720.webp" srcset="epk-assets/epkEX/photos/rockaway-360.webp 360w, epk-assets/epkEX/photos/rockaway-720.webp 720w" sizes="(min-width:760px) 380px, 90vw" alt="Live at Rockaway Beach album art" loading="lazy" decoding="async" width="720" height="720">
+        <button class="b sp-play" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>Play here</button>
+      </div>
+      <div>
+        <h2 id="h-listen">Live at Rockaway Beach</h2>
+        <a class="b solid" href="https://open.spotify.com/album/2tPVzNhSrSD9UI7L6cBmHL" target="_blank" rel="noopener">Stream the album ↗</a>
+        <ul class="chips" aria-label="Listen on">
+          <li><a href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt" target="_blank" rel="noopener">Spotify ↗</a></li>
+          <li><a href="https://music.apple.com/us/artist/blahsum/945248239" target="_blank" rel="noopener">Apple Music ↗</a></li>
+          <li><a href="https://music.youtube.com/channel/UCBS0frV3vTZVUphamRgtBUw" target="_blank" rel="noopener">YouTube Music ↗</a></li>
+          <li><a href="https://music.amazon.com/artists/B00R784AQ8/blahsum" target="_blank" rel="noopener">Amazon Music ↗</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="watch" aria-labelledby="h-watch">
+    <p class="kick"><span>03</span> watch</p>
+    <h2 id="h-watch">Videos</h2>
+    <div class="vids">
+      <figure class="vid"><div class="frame"><button type="button" data-yt="bQXSdhBLWg8" aria-label="Play Uncle Gabe's Band"><img data-src="https://i.ytimg.com/vi/bQXSdhBLWg8/hqdefault.jpg" alt="" decoding="async"></button></div><figcaption>Uncle Gabe's Band</figcaption></figure>
+      <figure class="vid"><div class="frame"><button type="button" data-yt="-ZTp4umFVtc" aria-label="Play Way Too Long"><img data-src="https://i.ytimg.com/vi/-ZTp4umFVtc/hqdefault.jpg" alt="" decoding="async"></button></div><figcaption>Way Too Long</figcaption></figure>
+      <figure class="vid"><div class="frame"><button type="button" data-yt="4PDDvqUrdH0" aria-label="Play West LA Fade Away"><img data-src="https://i.ytimg.com/vi/4PDDvqUrdH0/hqdefault.jpg" alt="" decoding="async"></button></div><figcaption>West LA Fade Away</figcaption></figure>
+      <figure class="vid"><div class="frame"><button type="button" data-yt="7TtFuV5DTn0" aria-label="Play Blahsum Is"><img data-src="https://i.ytimg.com/vi/7TtFuV5DTn0/hqdefault.jpg" alt="" decoding="async"></button></div><figcaption>Blahsum Is</figcaption></figure>
+    </div>
+  </section>
+  <section id="photos" aria-labelledby="h-photos">
+    <p class="kick"><span>04</span> photos</p>
+    <h2 id="h-photos">Press photos</h2>
+    <div class="photos" id="gallery"><button type="button" class="tall" data-i="0" data-large="epk-assets/epkEX/photos/hero-img-960.webp" data-full="pictures/gallery/hero-img.jpeg" aria-label="Open photo 1 of 9"><img src="epk-assets/epkEX/photos/hero-img-480.webp" srcset="epk-assets/epkEX/photos/hero-img-480.webp 480w, epk-assets/epkEX/photos/hero-img-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 1" loading="lazy" decoding="async"></button><button type="button" class="" data-i="1" data-large="epk-assets/epkEX/photos/blahsumfestphoto2-1600.webp" data-full="pictures/gallery/BlahsumFestPhoto2.jpeg" aria-label="Open photo 2 of 9"><img src="epk-assets/epkEX/photos/blahsumfestphoto2-480.webp" srcset="epk-assets/epkEX/photos/blahsumfestphoto2-480.webp 480w, epk-assets/epkEX/photos/blahsumfestphoto2-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 2" loading="lazy" decoding="async"></button><button type="button" class="tall" data-i="2" data-large="epk-assets/epkEX/photos/blahsumfestphoto3-960.webp" data-full="pictures/gallery/BlahsumFestPhoto3.jpeg" aria-label="Open photo 3 of 9"><img src="epk-assets/epkEX/photos/blahsumfestphoto3-480.webp" srcset="epk-assets/epkEX/photos/blahsumfestphoto3-480.webp 480w, epk-assets/epkEX/photos/blahsumfestphoto3-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 3" loading="lazy" decoding="async"></button><button type="button" class="wide" data-i="3" data-large="epk-assets/epkEX/photos/blahsumwonderville-22-1600.webp" data-full="pictures/gallery/BlahsumWonderville-22.jpg" aria-label="Open photo 4 of 9"><img src="epk-assets/epkEX/photos/blahsumwonderville-22-480.webp" srcset="epk-assets/epkEX/photos/blahsumwonderville-22-480.webp 480w, epk-assets/epkEX/photos/blahsumwonderville-22-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 4" loading="lazy" decoding="async"></button><button type="button" class="" data-i="4" data-large="epk-assets/epkEX/photos/blahsumfestphoto1-960.webp" data-full="pictures/gallery/BlahsumFestPhoto1.jpeg" aria-label="Open photo 5 of 9"><img src="epk-assets/epkEX/photos/blahsumfestphoto1-480.webp" srcset="epk-assets/epkEX/photos/blahsumfestphoto1-480.webp 480w, epk-assets/epkEX/photos/blahsumfestphoto1-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 5" loading="lazy" decoding="async"></button><button type="button" class="" data-i="5" data-large="epk-assets/epkEX/photos/blahsumsultan04-1600.webp" data-full="pictures/gallery/BlahsumSultan04.jpg" aria-label="Open photo 6 of 9"><img src="epk-assets/epkEX/photos/blahsumsultan04-480.webp" srcset="epk-assets/epkEX/photos/blahsumsultan04-480.webp 480w, epk-assets/epkEX/photos/blahsumsultan04-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 6" loading="lazy" decoding="async"></button><button type="button" class="" data-i="6" data-large="epk-assets/epkEX/photos/blahsumsultan02-1600.webp" data-full="pictures/gallery/BlahsumSultan02.jpg" aria-label="Open photo 7 of 9"><img src="epk-assets/epkEX/photos/blahsumsultan02-480.webp" srcset="epk-assets/epkEX/photos/blahsumsultan02-480.webp 480w, epk-assets/epkEX/photos/blahsumsultan02-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 7" loading="lazy" decoding="async"></button><button type="button" class="wide" data-i="7" data-large="epk-assets/epkEX/photos/blahsumfinals-20-1600.webp" data-full="pictures/gallery/BlahsumFinals-20.jpg" aria-label="Open photo 8 of 9"><img src="epk-assets/epkEX/photos/blahsumfinals-20-480.webp" srcset="epk-assets/epkEX/photos/blahsumfinals-20-480.webp 480w, epk-assets/epkEX/photos/blahsumfinals-20-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 8" loading="lazy" decoding="async"></button><button type="button" class="" data-i="8" data-large="epk-assets/epkEX/photos/blahsumteafactory01-1600.webp" data-full="pictures/gallery/BlahsumTeaFactory01.jpg" aria-label="Open photo 9 of 9"><img src="epk-assets/epkEX/photos/blahsumteafactory01-480.webp" srcset="epk-assets/epkEX/photos/blahsumteafactory01-480.webp 480w, epk-assets/epkEX/photos/blahsumteafactory01-960.webp 960w" sizes="(min-width:860px) 30vw, 50vw" alt="Blahsum live, press photo 9" loading="lazy" decoding="async"></button></div>
+    <p class="small">Tap a photo for full size · stage photo by Avram Wolf · logo: <a href="pictures/misc/blahsum_logoblack.PNG" download>download PNG</a></p>
+  </section>
+  <section id="booking" aria-labelledby="h-booking">
+    <p class="kick"><span>05</span> booking</p>
+    <h2 id="h-booking">Booking &amp; contact</h2>
+    <!-- TODO(Zach): add a booking email / agent here — the current EPK doesn't list one. -->
+    <div class="dm">
+      <p class="say">DM us.</p>
+      <p>For booking, send Blahsum a DM on Instagram or Facebook.</p>
+      <div class="acts">
+        <a class="b solid" href="https://www.instagram.com/blahsum/" target="_blank" rel="noopener">Instagram @blahsum ↗</a>
+        <a class="b" href="https://www.facebook.com/blahsumx/" target="_blank" rel="noopener">Facebook /blahsumx ↗</a>
+      </div>
+    </div>
+    <div class="rows">
+      <a href="https://www.youtube.com/@BlahSumX" target="_blank" rel="noopener"><b>YouTube ↗</b><span>@BlahSumX</span></a>
+      <a href="https://twitter.com/BLAHSUM" target="_blank" rel="noopener"><b>Twitter / X ↗</b><span>@BLAHSUM</span></a>
+      <a href="https://www.bandsintown.com/a/10653133" target="_blank" rel="noopener"><b>Shows ↗</b><span>Tour dates on Bandsintown</span></a>
+    </div>
+  </section>
+  <footer>© Blahsum · Post-Americana Live · Stage photo by Avram Wolf</footer>
+</main>
+
+<button class="b again" type="button" data-room id="again">▶ Back to the room</button>
+
+<dialog class="lb" id="lb" aria-label="Photo viewer">
+  <button class="b x" type="button" data-close>Close ✕</button>
+  <figure><img alt=""></figure>
+  <div class="bar"><button class="b" type="button" data-step="-1">← Prev</button><a class="b" data-full target="_blank" rel="noopener">Full size ↗</a><button class="b" type="button" data-step="1">Next →</button></div>
+</dialog>
+
+<script type="module" src="epk-assets/epkEX/room.js"></script>
+</body>
+</html>
