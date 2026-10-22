@@ -79,7 +79,8 @@ a{color:inherit}
 .hero-photo .frame{overflow:hidden;border:1.5px solid var(--ink);aspect-ratio:2048/1462;background:var(--paper-2)}
 .hero-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(1.08)}
 figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:13px;color:var(--mute)}
-.sticker{position:absolute;width:clamp(104px,12vw,168px);aspect-ratio:1;left:clamp(-28px,-2vw,-12px);top:clamp(-40px,-3vw,-22px);z-index:3}
+.sticker{position:absolute;width:clamp(96px,12vw,168px);aspect-ratio:1;right:-4px;top:-92px;z-index:3}
+@media (min-width:900px){.sticker{right:auto;left:clamp(-120px,-8vw,-60px);top:clamp(-84px,-5.5vw,-48px)}}
 .sticker svg{width:100%;height:100%;overflow:visible}
 .sticker .disc{fill:var(--ink)}
 .sticker text{font:700 13.5px var(--sans);letter-spacing:.2em;fill:var(--paper);text-transform:uppercase}
@@ -115,6 +116,10 @@ section{padding-block:clamp(64px,10vw,140px)}
 
 .statement{padding-block:clamp(40px,8vw,120px) clamp(20px,4vw,40px)}
 .statement p{font:400 clamp(34px,5.6vw,92px)/1.02 var(--serif);margin:0;text-wrap:balance;letter-spacing:-.015em}
+.statement .mf-h{font:900 clamp(56px,13.8vw,250px)/.8 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin:0 0 .18em}
+.statement p.mf{font:400 clamp(24px,3.4vw,54px)/1.12 var(--serif);text-wrap:pretty}
+.statement p.mf span{display:block;padding:.28em 0;border-top:1.5px solid var(--ink)}
+.statement p.mf span:last-child{border-bottom:1.5px solid var(--ink);font-style:italic}
 .statement p b{display:block;font:900 clamp(40px,13.8vw,250px)/.8 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin-top:.12em;color:var(--ink)}
 
 .full{position:relative;margin:0}
@@ -320,8 +325,8 @@ main:focus{outline:none}
           <path class="star" d="M80 52l6 20 20 2-16 12 6 20-16-12-16 12 6-20-16-12 20-2z"/>
         </svg>
       </div>
-      <div class="frame"><picture><source type="image/avif" srcset="epk-assets/shared/img/band-alley-640.avif 640w, epk-assets/shared/img/band-alley-1080.avif 1080w, epk-assets/shared/img/band-alley-1600.avif 1600w" sizes="(min-width:900px) 56vw, 100vw"><img src="epk-assets/shared/img/band-alley-1080.webp" srcset="epk-assets/shared/img/band-alley-640.webp 640w, epk-assets/shared/img/band-alley-1080.webp 1080w, epk-assets/shared/img/band-alley-1600.webp 1600w" sizes="(min-width:900px) 56vw, 100vw" width="1600" height="1142" alt="The six members of Blahsum standing together in a graffiti-covered alley at night, looking up at the camera" decoding="async" fetchpriority="high"></picture></div>
-      <figcaption><span>Fig. 1 — Blahsum</span><span>Brooklyn, NY</span></figcaption>
+      <div class="frame"><picture><source type="image/avif" srcset="epk-assets/shared/img/band-parkhouse-640.avif 640w, epk-assets/shared/img/band-parkhouse-1080.avif 1080w, epk-assets/shared/img/band-parkhouse-1600.avif 1600w" sizes="(min-width:900px) 56vw, 100vw"><img src="epk-assets/shared/img/band-parkhouse-1080.webp" srcset="epk-assets/shared/img/band-parkhouse-640.webp 640w, epk-assets/shared/img/band-parkhouse-1080.webp 1080w, epk-assets/shared/img/band-parkhouse-1600.webp 1600w" sizes="(min-width:900px) 56vw, 100vw" width="1600" height="1142" alt="Blahsum playing live outdoors at McCarren Parkhouse, the whole six-piece band in frame as the singer kicks forward into the mic" decoding="async" fetchpriority="high"></picture></div>
+      <figcaption><span>Fig. 1 — Blahsum, McCarren Parkhouse 09.24.26</span><span>Photo: Avram Wolf</span></figcaption>
     </figure>
   </div>
 </div>
@@ -340,7 +345,7 @@ main:focus{outline:none}
         <li><span>Sound</span><span>Rock · Jam · Punk · Rap</span></li>
         <li><span>Live</span><span>East coast venues</span></li>
         <li><span>Members</span><span>Six</span></li>
-        <li><span>Live record</span><span>Live at Rockaway Beach</span></li>
+        <li><span>Latest record</span><span>Connecticut</span></li>
       </ul>
     </div></aside>
     <div class="bio">
@@ -358,7 +363,8 @@ main:focus{outline:none}
 </figure>
 
 <div class="statement wrap">
-  <p>Drawing upon American musical and cultural myths through a distorted lens, together they alchemize a new sound: <b>Post&#8209;Americana</b></p>
+  <h2 class="mf-h">Blahsum</h2>
+  <p class="mf"><span>We are post Americana</span><span>We are the future of the free world</span><span>We are the sum of all the parts that is greater than the whole</span><span>This is year 1 of 300 and we are the flickering flame of the torch that will never go out and cannot be passed</span><span>Those who came before us will not be forgotten, and every part of their memory will live on through us and everyone who hears our voices</span><span>God bless all the best to ever do it</span></p>
 </div>
 
 <section class="wrap" aria-labelledby="lineup-h" style="padding-top:clamp(32px,5vw,64px)">
@@ -376,12 +382,12 @@ main:focus{outline:none}
 <section id="listen" class="wrap" aria-labelledby="listen-h">
   <div class="sec-h"><span class="num">03</span><h2 id="listen-h">Listen</h2><span class="label">Music</span></div>
   <div class="feature">
-    <div class="cover"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-live-at-rockaway-320.avif 320w, epk-assets/shared/img/cover-live-at-rockaway-640.avif 640w" sizes="(min-width:860px) 38vw, 100vw"><img src="epk-assets/shared/img/cover-live-at-rockaway-640.webp" srcset="epk-assets/shared/img/cover-live-at-rockaway-320.webp 320w, epk-assets/shared/img/cover-live-at-rockaway-640.webp 640w" sizes="(min-width:860px) 38vw, 100vw" width="640" height="640" alt="Live at Rockaway Beach cover art: Blahsum Summer Jam, a cartoon shark in sunglasses" loading="lazy" decoding="async"></picture></div>
+    <div class="cover"><picture><source type="image/avif" srcset="epk-assets/shared/img/cover-connecticut-320.avif 320w, epk-assets/shared/img/cover-connecticut-640.avif 640w" sizes="(min-width:860px) 38vw, 100vw"><img src="epk-assets/shared/img/cover-connecticut-640.webp" srcset="epk-assets/shared/img/cover-connecticut-320.webp 320w, epk-assets/shared/img/cover-connecticut-640.webp 640w" sizes="(min-width:860px) 38vw, 100vw" width="640" height="640" alt="Connecticut cover art" loading="lazy" decoding="async"></picture></div>
     <div>
-      <span class="label">Featured live record</span>
-      <h3>Live at Rockaway Beach<span>Blahsum Summer Jam</span></h3>
-      <a class="btn" href="https://open.spotify.com/album/2tPVzNhSrSD9UI7L6cBmHL?si=ZHlclCVFRJKKAIIaT7Bg-w">Stream</a>
-      <div class="player"><button type="button" data-spotify="album/2tPVzNhSrSD9UI7L6cBmHL" data-title="Live at Rockaway Beach on Spotify"><span class="dot"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#fff"/></svg></span>Play it right here (loads Spotify player)</button></div>
+      <span class="label">Featured record</span>
+      <h3>Connecticut<span>Blahsum</span></h3>
+      <a class="btn" href="https://open.spotify.com/album/3KsbT88HIQUDmBzEyXKu6v">Stream</a>
+      <div class="player"><button type="button" data-spotify="album/3KsbT88HIQUDmBzEyXKu6v" data-title="Connecticut on Spotify"><span class="dot"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#fff"/></svg></span>Play it right here (loads Spotify player)</button></div>
       <ul class="plat" aria-label="Streaming platforms">
         <li><a href="https://open.spotify.com/artist/54aU8y6dR6lasY9bIaT6mt">Spotify</a></li>
         <li><a href="https://music.apple.com/us/artist/blahsum/945248239">Apple Music</a></li>
@@ -405,10 +411,8 @@ main:focus{outline:none}
 <section id="watch" class="wrap" aria-labelledby="watch-h">
   <div class="sec-h"><span class="num">04</span><h2 id="watch-h">Watch</h2><span class="label">Videos</span></div>
   <div class="vids">
-    <div class="vid"><h3>Uncle Gabe’s Band <small>01</small></h3><button class="yt" type="button" data-yt="bQXSdhBLWg8" data-title="Uncle Gabe's Band"><img src="https://i.ytimg.com/vi/bQXSdhBLWg8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: Uncle Gabe’s Band</span></button></div>
-    <div class="vid"><h3>Way Too Long <small>02</small></h3><button class="yt" type="button" data-yt="-ZTp4umFVtc" data-title="Way Too Long"><img src="https://i.ytimg.com/vi/-ZTp4umFVtc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: Way Too Long</span></button></div>
-    <div class="vid"><h3>West LA Fade Away <small>03</small></h3><button class="yt" type="button" data-yt="4PDDvqUrdH0" data-title="West LA Fade Away"><img src="https://i.ytimg.com/vi/4PDDvqUrdH0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: West LA Fade Away</span></button></div>
-    <div class="vid"><h3>Blahsum Is <small>04</small></h3><button class="yt" type="button" data-yt="7TtFuV5DTn0" data-title="Blahsum Is"><img src="https://i.ytimg.com/vi/7TtFuV5DTn0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: Blahsum Is</span></button></div>
+    <div class="vid"><h3>Big River (live in Brooklyn) <small>01</small></h3><button class="yt" type="button" data-yt="y0oln-dlDiw" data-title="Big River (live in Brooklyn)"><img src="https://i.ytimg.com/vi/y0oln-dlDiw/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: Big River (live in Brooklyn)</span></button></div>
+    <div class="vid"><h3>Mother Of All Wastes Of Time <small>02</small></h3><button class="yt" type="button" data-yt="jdBZ1pEbJaY" data-title="Mother Of All Wastes Of Time"><img src="https://i.ytimg.com/vi/jdBZ1pEbJaY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="pl"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="#0B0B0B"/></svg></span><span class="vh">Play video: Mother Of All Wastes Of Time</span></button></div>
   </div>
   <p style="margin-top:24px"><a class="btn ghost" href="https://www.youtube.com/@BlahSumX">More on YouTube ↗</a></p>
 </section>
